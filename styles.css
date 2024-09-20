@@ -1,0 +1,607 @@
+body {
+    font-family: 'Roboto', sans-serif; /* Fonte moderna e limpa */
+    background-color: #f5f5f5; /* Branco claro para o fundo */
+    color: #333; /* Texto escuro para contraste */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-image: url('img/headermobile.png');
+    background-color: #ffffff; /* Branco para o cabeçalho */
+    position: relative;
+    width: 100%;
+    height: 300px; /* Define a altura do header */
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* Linha sutil para separar o cabeçalho */
+    background-size: cover; /* Garante que a imagem cubra todo o header */
+    background-position: center; /* Centraliza a imagem no header */
+    display: flex;
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+    align-items: center; /* Centraliza os elementos verticalmente */
+}
+
+header h1 {
+    margin: 5px;
+    font-size: 1.6em;
+    color: #333; /* Texto escuro */
+}
+
+.logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 50px; /* Tamanho da logo */
+    height: 50px;
+    border-radius: 50%; /* Torna a imagem redonda */
+    border: 2px solid #ddd; /* Borda para a logo */
+}
+
+
+    /* Estilo para o banner */
+    .banner { 
+        height: auto;
+        overflow: hidden;
+        text-align: center;
+        margin-bottom: 20px; /* Espaçamento abaixo do banner */
+    }
+
+    /* Estilo da imagem no banner */
+    .banner img {
+        height: auto;
+        display: block; /* Remove espaços em branco abaixo da imagem */
+        margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    }
+
+
+        
+
+        .carousel {
+            max-width: 400px;
+            position: relative;
+            margin: 20px auto;
+
+            overflow: hidden;
+        }
+    
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+    
+        .carousel img.active {
+            display: block;
+        }
+    
+
+nav a {
+    color: #333; /* Cor escura para links */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f5a623; /* Amarelo suave no hover */
+    text-decoration: underline;
+}
+
+.hero {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #ffffff; /* Fundo branco para destacar o herói */
+    border-bottom: 1px solid #ddd; /* Linha sutil para separar a seção */
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    color: #f5a623; /* Amarelo suave */
+}
+
+.btn {
+    background-color: #f5a623; /* Amarelo suave */
+    color: #ffffff; /* Texto claro para contraste */
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.btn:hover {
+    background-color: #f39c12; /* Amarelo mais escuro */
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Pelo menos 2 produtos por linha em telas grandes */
+    gap:2px; /* Espaçamento entre os itens */
+    margin: 10px;
+}
+
+.product-card {
+    background-color: #ffffff; /* Branco */
+    border: 1px solid #ddd; /* Borda sutil */
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para um efeito 3D */
+    position: relative;
+    overflow: hidden; /* Garante que a imagem não saia do card */
+    display: flex;
+    flex-direction: column; /* Para alinhar itens verticalmente */
+}
+ 
+.product-card a {
+    color: #f39c12;
+}
+
+/* Estilo do preço do produto */
+.product-card .price {
+    font-size: 1.1em; /* Tamanho da fonte ajustado */
+    margin-bottom: 10px;
+    margin-top: auto;
+}
+
+/* Ajuste do tamanho da imagem do produto */
+.product-card img {
+    width: 100%; /* Faz a imagem ocupar toda a largura do cartão */
+    height: auto; /* Mantém a proporção da imagem */
+    max-height: 200px; /* Limita a altura máxima da imagem */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
+    margin-bottom: 10px; /* Espaço abaixo da imagem */
+}
+
+.product-card img.secondary {
+    display: none; /* Esconde a imagem secundária por padrão */
+}
+
+.product-card.active img.primary {
+    display: none; /* Esconde a imagem primária quando o card está ativo */
+}
+
+.product-card.active img.secondary {
+    display: block; /* Mostra a imagem secundária quando o card está ativo */
+}
+
+.product-card h2 {
+    color: #f5a623; /* Amarelo suave */
+    font-size: 1.4em; /* Ajustado para um tamanho menor */
+    margin: 0; /* Remove margem para ajustar o layout */
+}
+
+.product-card p {
+    display: block; /* Exibe a descrição breve */
+    max-height: 80px; /* Limita a altura da descrição para evitar excesso de espaço */
+    overflow: hidden; /* Oculta o excesso de texto */
+    margin-bottom: 15px; /* Espaço entre a descrição e o botão */
+}
+
+.add-to-cart {
+    background-color: #ff5722; /* Cor de fundo chamativa */
+    color: #fff; /* Cor do texto branca */
+    border: none; /* Remove borda padrão */
+    border-radius: 25px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Padding ajustado */
+    font-size: 16px; /* Tamanho da fonte adequado */
+    cursor: pointer; /* Mostra o ponteiro de mão no hover */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-top: auto; /* Garante que o botão fique no fundo do cartão */
+    display: block; /* Garante que o botão ocupe a largura disponível */
+
+}
+
+.add-to-cart:hover {
+    background-color: #e64a19; /* Cor de fundo mais escura no hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+}
+
+.arrow-button {
+    background-color: #f5a52300; /* Amarelo suave */
+    border: none;
+    color: #706b6b; /* Texto claro para contraste */
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 20%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    z-index: 1;
+}
+
+.arrow-left {
+    left: 5px;
+}
+
+.arrow-right {
+    right: 5px;
+}
+
+
+
+#h2cart {
+    color: #ffffff;
+}
+
+#cart-items {
+    color: #ffffff;
+}
+
+.cart-item {
+    background-color: #ffffff; /* Branco */
+    border: 1px solid #ddd; /* Borda sutil */
+    border-radius: 6px;
+    padding: 12px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-from-cart {
+    background-color: #e74c3c; /* Vermelho para destacar a remoção */
+    color: #ffffff; /* Texto claro para contraste */
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.remove-from-cart:hover {
+    background-color: #c0392b; /* Vermelho mais escuro */
+}
+
+.total {
+    font-size: 1.3em;
+    margin: 20px 0;
+}
+
+footer {
+    background-color: #ffffff; /* Branco */
+    color: #333; /* Texto escuro */
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #ddd; /* Linha sutil para separar o rodapé */
+    position: relative; /* Para posicionar o contêiner de imagem */
+    }
+
+    footer a {
+        color: #f39c12;
+    }
+
+    footer .payment-info {
+        margin-top: 15px; /* Espaço acima da imagem */
+    }
+
+    footer .payment-info img {
+        width: 110px;
+        max-width: 100%; /* Ajusta a imagem para a largura do contêiner */
+        height: auto; /* Mantém a proporção da imagem */
+        display: inline-block; /* Mantém a imagem dentro do fluxo do texto */
+    }
+
+.whatsapp {
+    display: block;
+    margin: 10px 0;
+    color: #f5a623; /* Amarelo suave */
+}
+
+        /* Estilos botão WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 45px;
+            right: 27px;
+            z-index: 999;
+        }
+    
+        .whatsapp-btn img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+    
+        .whatsapp-btn img:hover {
+            transform: scale(1.1);
+        }
+    
+        .tooltip {
+            visibility: visible;
+            font-size: 12px;
+            width: 110px;
+            background-color: #4b52589d;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -55px;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+    
+        .whatsapp-btn:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            background-color: #4b5258;
+        }
+
+        /* Estilos do carrinho */
+        #cart {
+            position: fixed;
+            top: 15px; /* Ajuste a distância do topo conforme necessário */
+            right: 35px; /* Ajuste a distância da borda direita conforme necessário */
+            background-color: #f5a623;
+            color: #fff;
+            padding: 15px; /* Ajuste o padding para um tamanho menor */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em; /* Reduz o tamanho da fonte */
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        #cart:hover {
+            background-color: #f5a623;
+        }
+    
+        #cart i {
+            margin-right: 5px; /* Ajusta o espaço entre o ícone e o texto */
+        }
+    
+        .cart-item {
+            background-color: #1a1a1a;
+            border: 1px solid #f5a623;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .cart-item button {
+            background-color: #f5a623;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    
+        .cart-item button:hover {
+            background-color: #f5a623;
+        }
+    
+        /* Estilo específico para o botão "Enviar pedido" */
+        #btn-submit {
+            background-color: #f5a623;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+    
+        #btn-submit:hover {
+            background-color: #f5a623;
+        }
+
+                /* Estilos do modal */
+        .modal {
+            display: none; /* Oculta o modal por padrão */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            }
+            
+                /* Estilo da imagem no modal */
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            }
+            
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            }
+        
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            }
+            
+        .close:hover {
+            color: #f5a623;
+            }     
+                 
+            
+       
+/* Responsividade */
+
+@media (min-width: 768px) {
+    header {
+        display: none; /* Ou use visibility: hidden; se preferir */
+    }
+}
+
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Menos espaço em telas menores */
+    }
+}
+
+header {
+    height: 500px; /* Ajusta a altura do header para telas menores */
+}
+
+.social-icon {
+    font-size: 20px;
+    margin: 0 8px;
+}
+
+
+.add-to-cart {
+    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
+    padding: 8px 15px; /* Reduz o padding para ajuste */
+    width: 100%; /* Garante que o botão ocupe toda a largura do card */
+    margin-top: auto; /* Adiciona espaço acima do botão */
+}
+
+.banner { 
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 20px; /* Espaçamento abaixo do banner */
+    margin-top: 10px;
+}
+
+/* Estilo da imagem no banner */
+.banner img {
+    width: 100%;
+    height: 100%;
+    display: block; /* Remove espaços em branco abaixo da imagem */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    object-fit: cover;
+    transition: opacity 1s ease;
+}
+
+
+
+@media (max-width: 480px) {
+    .products {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Mesmo para dispositivos muito pequenos */
+    }
+}
+
+header {
+    height: 500px; /* Ajusta a altura do header para telas menores */
+}
+
+.add-to-cart {
+    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
+    padding: 8px 15px; /* Reduz o padding para ajuste */
+    width: 100%; /* Garante que o botão ocupe toda a largura do card */
+    margin-top: auto; /* Adiciona espaço acima do botão */
+}
+
+
+.social-icon {
+    font-size: 20px;
+    margin: 0 8px;
+}
+
+
+            /* Ajuste do botão do carrinho para telas menores */
+            #cart {
+                top: 55px;
+                right: 15px;
+                font-size: 1.3em;
+                padding: 10px;
+            }
+    
+            #cart i {
+                margin-right: 4px;
+}
+
+.banner { 
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 20px; /* Espaçamento abaixo do banner */
+    margin-top: 10px;
+}
+
+/* Estilo da imagem no banner */
+.banner img {
+    width: 100%;
+    height: 100%;
+    display: block; /* Remove espaços em branco abaixo da imagem */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    object-fit: cover;
+    transition: opacity 1s ease;
+}
+
+/* Mídia query para telas com resolução de 720 x 1600px */
+@media (max-width: 720px) {
+    .catalog-container {
+        padding: 5px; /* Reduz o padding para telas menores */
+    }
+
+    .product-card {
+        flex: 1 1 calc(50% - 10px); /* Ajusta a largura dos produtos para duas colunas */
+        max-width: calc(90% - 10px); /* Limita a largura dos produtos */
+        margin: 0; /* Remove margens para melhor ajuste */
+    }
+
+    header {
+        height: 700px; /* Ajusta a altura do header para telas menores */
+    }
+    
+
+    header h1 {
+        font-size: 1.5em; /* Reduz o tamanho da fonte do título em telas menores */
+        margin-top: 20px;
+    }
+
+    header .logo {
+        height: 50px; /* Ajusta a altura da logo para telas menores */
+        top: 5px; /* Ajusta a posição da logo para telas menores */
+        left: 10px; /* Ajusta a posição da logo para telas menores */
+    }
+}
+
+.add-to-cart {
+    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
+    padding: 8px 15px; /* Reduz o padding para ajuste */
+    width: 100%; /* Garante que o botão ocupe toda a largura do card */
+    margin-top: auto; /* Adiciona espaço acima do botão */
+}
+
+.banner { 
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 20px; /* Espaçamento abaixo do banner */
+    margin-top: 10px;
+}
+
+/* Estilo da imagem no banner */
+.banner img {
+    width: 100%;
+    height: 100%;
+    display: block; /* Remove espaços em branco abaixo da imagem */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    object-fit: cover;
+    transition: opacity 1s ease;
+}
