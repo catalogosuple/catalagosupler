@@ -202,8 +202,8 @@ nav a:hover {
 .arrow-button {
     background-color: #f5a52300; /* Amarelo suave */
     border: none;
-    color: #706b6b; /* Texto claro para contraste */
-    padding: 10px;
+    color: #706b6b98; /* Texto claro para contraste */
+    padding: 2px;
     border-radius: 50%;
     cursor: pointer;
     position: absolute;
