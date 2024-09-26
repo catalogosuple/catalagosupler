@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitamina C</title>
+    <style>
+        /* Estilos gerais do corpo */
+        body {
+            height: 100vh; /* Para garantir que o body ocupe 100% da altura da janela */
+            margin: 0;    /* Remove margens padrão */
+            display: flex; /* Usando flexbox */
+            flex-direction: column; /* Coloca os itens na coluna */
+            font-family: 'Arial', sans-serif;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        main {
+            flex: 1; /* Faz o main crescer e ocupar o espaço restante */
+        }
+
+        header {
+            background-color: #ffffff; /* Branco para o cabeçalho */
+            position: relative;
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid #ddd; /* Linha sutil para separar o cabeçalho */
+            display: flex;
+            justify-content: center; /* Centraliza os elementos horizontalmente */
+            align-items: center; /* Centraliza os elementos verticalmente */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .logo {
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            width: 50px; /* Tamanho da logo */
+            height: 50px;
+            border-radius: 50%; /* Torna a imagem redonda */
+            border: 2px solid #ddd; /* Borda para a logo */
+        
+        }
+       
+
+
+
+        nav {
+            position: fixed; /* Fixa o menu no topo da tela */
+            top: 0; /* Define o menu no topo da página */
+            width: 100%; /* Garante que o menu ocupe toda a largura da tela */
+            z-index: 1000; /* Coloca o menu acima de outros elementos */
+            background-color: rgb(226, 10, 10); /* Cor de fundo */
+            padding: 25px 0; /* Espaçamento no menu */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destacar o menu */
+        }
+        
+        /* Estilos gerais do menu de navegação */
+        .nav-menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #ffffff;
+            list-style: none;
+            margin: 0;
+        }
+        
+        /* Estilos dos itens de menu */
+        .nav-menu li {
+            display: inline;
+            margin: 0 15px;
+            padding: 3px;
+        }
+        
+        .nav-menu li a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            color: white !important;
+        }
+        
+        /* Ícone hambúrguer */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px; /* Define o ícone no canto superior direito */
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 30px;  /* Largura do hambúrguer fechado */
+            height: 3px;  /* Espessura das linhas */
+            background-color: rgb(255, 255, 255);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 6px;
+            width: 20px;
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            width: 20px;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: -8px;
+            width: 20px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-details {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+        }
+
+        .image-gallery {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            margin: 0 5px;
+        }
+
+        .thumbnail:hover {
+            border-color: #f39c12; /* Amarelo ao passar o mouse */
+        }
+
+        .thumbnail.active {
+            border-color: #f39c12; /* Amarelo ativo */
+        }
+
+        .product-info {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-info h2 {
+            font-size: 2em;
+            color: #f39c12; /* Amarelo */
+            margin: 10px 0;
+        }
+
+        .product-info .description {
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #666;
+        }
+
+        .product-info .price {
+            font-size: 2em;
+            color: #e74c3c; /* Vermelho */
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .product-info .add-to-cart {
+            background-color: #f39c12;
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .product-info .add-to-cart:hover {
+            background-color: #e59400; /* Cor do botão ao passar o mouse */
+        }
+
+        
+
+        /* Estilos do footer */
+        footer {
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        footer a {
+            color: #f39c12;
+        }
+
+        footer .payment-info {
+            margin-top: 15px;
+        }
+
+        footer .payment-info img {
+            width: 110px;
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
+
+
+       @media (min-width: 768px) {
+            header {
+                background-image: url('img/bannerheader.png') !important;
+            }
+
+            .hamburger {
+                display: none; /* Esconde o ícone de hambúrguer em telas grandes */
+            }
+            .nav-menu {
+                display: block; /* Assegure-se de que o menu esteja visível */
+            }
+            .nav-menu a {
+                justify-content: space-around;
+            }
+            
+            .logo {
+            display: block !important;
+            
+            }
+
+        }
+        /* Estilos para dispositivos móveis */
+        @media (max-width: 768px) {
+            
+            .product-details {
+                flex-direction: column;
+            }
+
+            .product-info h2 {
+                font-size: 1.8em;
+            }
+
+            .product-info .description {
+                font-size: 1em;
+            }
+
+            .product-info .price {
+                font-size: 1.5em;
+            }
+
+            .product-info .add-to-cart {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .logo {
+            display: none;
+            
+            }
+
+            header {
+                background-size: cover; /* Garante que a imagem cubra todo o header */
+                background-position: center; /* Centraliza a imagem no header */
+            }
+
+
+            .nav-menu {
+                display: none; /* O menu fica oculto por padrão em dispositivos móveis */
+                flex-direction: column;
+                position: absolute;
+                top: 50px !important;
+                left: 0;
+                width: 100%;
+                background-color: rgba(226, 10, 10, 0.644) !important;
+            }
+
+
+            .nav-menu.active {
+                display: flex; /* Exibe o menu quando a classe 'active' é adicionada */
+            }
+
+            .hamburger {
+                display: flex; /* Exibe o ícone do menu em dispositivos móveis */
+            }
+        }
+
+        @media (max-width: 480px) {
+            
+            .products {
+                grid-template-columns: repeat(2, 1fr); /* Mesmo para dispositivos muito pequenos */
+                gap: 5px;
+            }
+        }
+
+        .logo {
+            display: none;
+        }
+
+        header {
+            height: 50px; /* Ajusta a altura do header para telas menores */
+        }
+
+        .nav-menu {
+            display: none; /* O menu fica oculto por padrão em dispositivos móveis */
+            flex-direction: column;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(226, 10, 10, 0.644) !important;
+        }
+
+        .nav-menu.active {
+            display: flex; /* Exibe o menu quando a classe 'active' é adicionada */
+        }
+
+        .hamburger {
+            display: flex; /* Exibe o ícone do menu em dispositivos móveis */
+        }
+
+
+
+        #message {
+            font-size: 15px;
+            bottom: 20px;
+        }
+
+        .add-to-cart {
+            font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
+            padding: 8px 15px; /* Reduz o padding para ajuste */
+            width: 100%; /* Garante que o botão ocupe toda a largura do card */
+            margin-top: auto; /* Adiciona espaço acima do botão */
+        }
+
+
+        .social-icon {
+            font-size: 20px;
+            margin: 0 8px;
+        }
+
+
+                    /* Ajuste do botão do carrinho para telas menores */
+                    #cart {
+                        top: 85px;
+                        right: 15px;
+                        font-size: 1.3em;
+                        padding: 10px;
+                    }
+            
+                    #cart i {
+                        margin-right: 4px;
+        }
+
+        .banner { 
+            height: auto;
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 20px; /* Espaçamento abaixo do banner */
+            margin-top: 10px;
+        }
+
+        /* Estilo da imagem no banner */
+        .banner img {
+            width: 100%;
+            height: 100%;
+            display: block; /* Remove espaços em branco abaixo da imagem */
+            margin: 0 auto; /* Centraliza a imagem horizontalmente */
+            object-fit: cover;
+            transition: opacity 1s ease;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+         <!-- Menu de navegação -->
+         <nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="https://meubloz.blogspot.com/">Blog</a></li>
+                <li><a href="https://meubloz.blogspot.com/p/contatos.html">Contato</a></li>
+                <img src="../img/rounded-in-photoretrica.png" alt="Logo" class="logo"> <!-- Adiciona a logo --> 
+            </ul>
+            
+        </nav>
+    </header>
+    <main>
+        <section class="product-details">
+            <div class="image-gallery">
+                <img src="../img/vitaminac.PNG" alt="Vitamina C" class="product-image" id="mainImage">
+            </div>
+            <div class="product-info">
+                <h2>Vitamina C</h2>
+                <p class="description">A vitamina C, também conhecida como ácido ascórbico, é uma vitamina solúvel em água essencial para várias funções corporais.</p>
+                <p class="price">R$ 45,00</p>
+               
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024. Todos os direitos reservados.</p>
+        <div class="payment-info">
+            <p>Formas de pagamento:</p>
+            <img src="../img/whatsapp-badge.png" alt="Formas de Pagamento">
+        </div>
+    </footer>
+
+    <script>
+        function changeImage(imageSrc) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = imageSrc;
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        // Seleciona o ícone do menu hamburguer e a lista de navegação
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active'); // Alterna o estado do ícone
+            menu.classList.toggle('active'); // Alterna a visibilidade do menu
+        });
+
+    </script>
+</body>
+</html>
