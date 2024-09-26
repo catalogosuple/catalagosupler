@@ -183,6 +183,11 @@ header h1 {
     flex-direction: column; /* Para alinhar itens verticalmente */
     
 }
+
+#producth2 {
+    color: #1a1001;
+    font-size: 17px;
+}
  
 .product-card a {
     color: #f39c12;
@@ -469,7 +474,7 @@ footer {
         .modal {
             display: none; /* Oculta o modal por padrão */
             position: fixed;
-            z-index: 1000;
+            z-index: 1002;
             left: 0;
             top: 0;
             width: 100%;
