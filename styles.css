@@ -2,20 +2,20 @@ body {
     font-family: 'Roboto', sans-serif; /* Fonte moderna e limpa */
     background-color: #f5f5f5; /* Branco claro para o fundo */
     color: #333; /* Texto escuro para contraste */
-    margin: 0;
-    padding: 0;
+    margin: 0; /* Garante que não haja espaço ao redor do corpo */
+    padding: 0; /* Garante que não haja preenchimento ao redor do corpo */
 }
 
 header {
-    background-image: url('img/headermobile.png');
+    background-image: url('img/bannerheader.png');
+    background-size: cover; /* A imagem cobre todo o header */
+    background-position: center; /* Centraliza a imagem */
+    height: 500px; /* Altura do header */
     background-color: #ffffff; /* Branco para o cabeçalho */
     position: relative;
     width: 100%;
-    height: 300px; /* Define a altura do header */
     text-align: center;
     border-bottom: 1px solid #ddd; /* Linha sutil para separar o cabeçalho */
-    background-size: cover; /* Garante que a imagem cubra todo o header */
-    background-position: center; /* Centraliza a imagem no header */
     display: flex;
     justify-content: center; /* Centraliza os elementos horizontalmente */
     align-items: center; /* Centraliza os elementos verticalmente */
@@ -28,31 +28,51 @@ header h1 {
 }
 
 .logo {
+    display: block;
     position: absolute;
-    top: 15px;
+    top: 5px;
     left: 15px;
     width: 50px; /* Tamanho da logo */
     height: 50px;
     border-radius: 50%; /* Torna a imagem redonda */
     border: 2px solid #ddd; /* Borda para a logo */
+   
 }
 
 
     /* Estilo para o banner */
-    .banner { 
-        height: auto;
+    #bannerContainer {
+        position: relative;
         overflow: hidden;
-        text-align: center;
-        margin-bottom: 20px; /* Espaçamento abaixo do banner */
+        max-width: 1200px; /* Largura máxima do banner */
+        margin: 20px auto; /* Centraliza o banner */
     }
 
-    /* Estilo da imagem no banner */
-    .banner img {
-        height: auto;
-        display: block; /* Remove espaços em branco abaixo da imagem */
-        margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    #bannerImage {
+        width: 100%;
+        height: 500px; /* Altura padrão para telas menores */
+        object-fit: cover;
     }
 
+    .indicator-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .indicator {
+        width: 15px;
+        height: 15px;
+        background-color: #ccc;
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.1s;
+    }
+
+    .indicator.active {
+        background-color: #333;
+    }
 
         
 
@@ -60,7 +80,6 @@ header h1 {
             max-width: 400px;
             position: relative;
             margin: 20px auto;
-
             overflow: hidden;
         }
     
@@ -73,19 +92,46 @@ header h1 {
         .carousel img.active {
             display: block;
         }
-    
 
-nav a {
-    color: #333; /* Cor escura para links */
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
+        .carousel-indicators {
+            text-align: center;
+            margin-top: 10px;
+        }
 
-nav a:hover {
-    color: #f5a623; /* Amarelo suave no hover */
-    text-decoration: underline;
-}
+        nav {
+            text-align: center;
+            margin: 0;
+        }
+        
+        .nav-menu {
+            display: flex; /* Para alinha os itens em uma linha */
+            flex-direction: row; /* Alinha os itens horizontalmente */
+            justify-content: space-around; /* Espaçamento igual entre os itens */
+            padding: 10px; /* Espaçamento interno */
+            position: fixed; /* Fixa o menu no topo da página */
+            top: 0; /* Posiciona o menu no topo */
+            left: -15px; /* Alinha o menu à esquerda */
+            width: 100%; /* Largura total da tela */
+            z-index: 1001; /* Coloca o menu acima de outros elementos */
+            background-color: #ffffff; /* Define a cor de fundo para garantir que o texto seja legível */
+        }
+        
+        .nav-menu li {
+            display: inline;
+            margin: 0 15px;
+            
+        }
+        
+        .nav-menu li a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .nav-menu li a:hover {
+            color: #080100;
+        }
 
 .hero {
     text-align: center;
@@ -116,9 +162,12 @@ nav a:hover {
 
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Pelo menos 2 produtos por linha em telas grandes */
-    gap:2px; /* Espaçamento entre os itens */
     margin: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px; /* Largura máxima do container */
+    margin: 0 auto; /* Centraliza o container */
 }
 
 .product-card {
@@ -132,6 +181,7 @@ nav a:hover {
     overflow: hidden; /* Garante que a imagem não saia do card */
     display: flex;
     flex-direction: column; /* Para alinhar itens verticalmente */
+    
 }
  
 .product-card a {
@@ -147,11 +197,10 @@ nav a:hover {
 
 /* Ajuste do tamanho da imagem do produto */
 .product-card img {
-    width: 100%; /* Faz a imagem ocupar toda a largura do cartão */
+    max-width: 200px;
+    width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
     height: auto; /* Mantém a proporção da imagem */
-    max-height: 200px; /* Limita a altura máxima da imagem */
-    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
-    margin-bottom: 10px; /* Espaço abaixo da imagem */
+    object-fit: cover; /* Corta a imagem se necessário, mantendo a centralização */
 }
 
 .product-card img.secondary {
@@ -335,6 +384,22 @@ footer {
             background-color: #4b5258;
         }
 
+
+        #message {
+            position: fixed;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #127e12c4; /* Cor de fundo verde */
+            color: white; /* Texto branco */
+            padding: 15px;
+            border-radius: 15px;
+            z-index: 1000;
+            display: none; /* Inicialmente escondido */
+            transition: opacity 0.5s;
+        }
+        
+
         /* Estilos do carrinho */
         #cart {
             position: fixed;
@@ -451,18 +516,59 @@ footer {
 
 @media (min-width: 768px) {
     header {
-        display: none; /* Ou use visibility: hidden; se preferir */
+        background-image: url('img/bannerheader.png') !important;
     }
+    .nav-menu {
+        display: block; /* Assegure-se de que o menu esteja visível */
+    }
+    .nav-menu a {
+        justify-content: space-around;
+    }
+    .logo {
+       display: block !important;
+       
+    }
+
 }
+
 
 @media (max-width: 768px) {
     .products {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Menos espaço em telas menores */
+        grid-template-columns: repeat(2, 1fr); /* Duas colunas em telas menores */ /* Menos espaço em telas menores */
+        gap: 5px;
     }
 }
 
+.logo {
+   display: none;
+   
+}
+
 header {
-    height: 500px; /* Ajusta a altura do header para telas menores */
+    background-image: url('img/headermobile.png');
+    background-size: cover; /* Garante que a imagem cubra todo o header */
+    background-position: center; /* Centraliza a imagem no header */
+}
+
+
+.nav-menu {
+    align-items: center; /* Centraliza os itens */
+    padding: 20px; /* Aumenta o espaçamento interno */
+    background-color: #e73f3fec;
+    top: -17px;
+}
+
+.nav-menu a {
+    padding: 10px 0; /* Espaçamento em cima e embaixo dos links */
+    text-align: center; /* Centraliza o texto dos links */
+    justify-content: space-around;
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    color: #fff; /* Cor do texto */
+    transition: background-color 0.3s; /* Transição suave para a cor de fundo */
+}
+
+.nav-menu a:hover {
+   color: #080100;
 }
 
 .social-icon {
@@ -487,25 +593,32 @@ header {
 }
 
 /* Estilo da imagem no banner */
-.banner img {
+#bannerImage {
     width: 100%;
-    height: 100%;
-    display: block; /* Remove espaços em branco abaixo da imagem */
-    margin: 0 auto; /* Centraliza a imagem horizontalmente */
-    object-fit: cover;
-    transition: opacity 1s ease;
+    height: auto;
+    transition: opacity 0.5s ease;
 }
 
 
 
 @media (max-width: 480px) {
     .products {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Mesmo para dispositivos muito pequenos */
+        grid-template-columns: repeat(2, 1fr); /* Mesmo para dispositivos muito pequenos */
+        gap: 5px;
     }
+}
+
+.logo {
+    display: none;
 }
 
 header {
     height: 500px; /* Ajusta a altura do header para telas menores */
+}
+
+#message {
+    font-size: 15px;
+    bottom: 20px;
 }
 
 .add-to-cart {
@@ -524,7 +637,7 @@ header {
 
             /* Ajuste do botão do carrinho para telas menores */
             #cart {
-                top: 55px;
+                top: 85px;
                 right: 15px;
                 font-size: 1.3em;
                 padding: 10px;
@@ -576,7 +689,7 @@ header {
 
     header .logo {
         height: 50px; /* Ajusta a altura da logo para telas menores */
-        top: 5px; /* Ajusta a posição da logo para telas menores */
+        top: 95px; /* Ajusta a posição da logo para telas menores */
         left: 10px; /* Ajusta a posição da logo para telas menores */
     }
 }
