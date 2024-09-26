@@ -12,8 +12,20 @@ function addToCart(productName, productPrice) {
     }
 
     updateCartCount();
-    alert(`${productName} adicionado ao carrinho!`);
+    
+    // Exibir mensagem de feedback
+    const messageDiv = document.getElementById('message');
+    messageDiv.innerText = `${productName} adicionado ao carrinho!`;
+    messageDiv.style.display = 'block'; // Mostra a mensagem
+    messageDiv.style.opacity = '1'; // Define a opacidade para 1
+    setTimeout(() => {
+        messageDiv.style.opacity = '0'; // Após 3 segundos, define a opacidade para 0
+        setTimeout(() => {
+            messageDiv.style.display = 'none'; // Esconde o elemento
+        }, 500); // Espera a transição de opacidade antes de esconder
+    }, 3000); // Tempo de exibição da mensagem
 }
+
 
 // Função para atualizar o número de itens no carrinho
 function updateCartCount() {
@@ -97,20 +109,74 @@ function prevImage(button) {
     images[prevIndex].style.display = 'block';
 }
 
-
-const images = ["img/mudarparamelhor.png", "img/melhores_precos.png", "img/teste.png"]; // adicione as URLs das suas imagens
+const images = ["img/mudarparamelhor.png", "img/melhores_precos.png", "img/teste.png", "img/seumelhor.png"]; // URLs das imagens
 let currentIndex = 0;
+const bannerImage = document.getElementById('bannerImage');
+const indicators = document.querySelectorAll('.indicator');
+let startX = 0; // Para capturar a posição inicial do toque
 
-function changeBanner() {
-    const bannerImage = document.getElementById('bannerImage');
-    currentIndex = (currentIndex + 1) % images.length; // aumenta o índice e faz o loop
+// Função para atualizar o banner e os indicadores
+function updateBanner() {
     bannerImage.style.opacity = 0; // faz a imagem desaparecer
-
     setTimeout(() => {
         bannerImage.src = images[currentIndex]; // muda a imagem
         bannerImage.style.opacity = 1; // faz a nova imagem aparecer
+        updateIndicators(); // atualiza os indicadores
     }, 1000); // espera a transição de saída
 }
 
-// Troca a imagem a cada 3 segundos
-setInterval(changeBanner, 3500);
+// Função para alterar o banner automaticamente
+function changeBanner() {
+    currentIndex = (currentIndex + 1) % images.length; // aumenta o índice e faz o loop
+    updateBanner();
+}
+
+// Função para mudar para um banner específico quando o indicador é clicado
+function changeBannerTo(index) {
+    currentIndex = index; // define o índice com base no indicador clicado
+    updateBanner();
+}
+
+// Função para atualizar os indicadores visuais
+function updateIndicators() {
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentIndex);
+    });
+}
+
+// Função para alterar para o próximo banner
+function nextBanner() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateBanner();
+}
+
+// Função para voltar ao banner anterior
+function prevBanner() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateBanner();
+}
+
+// Troca a imagem a cada 4 segundos automaticamente
+setInterval(changeBanner, 4000);
+
+// Inicializa os indicadores corretamente na primeira execução
+updateIndicators();
+
+// Lógica de arrastar (swipe) para dispositivos móveis
+bannerImage.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX; // Captura a posição inicial do toque
+});
+
+bannerImage.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX; // Captura a posição final do toque
+    const diffX = startX - endX; // Calcula a diferença
+
+    if (diffX > 50) {
+        // Se arrastou para a esquerda
+        nextBanner();
+    } else if (diffX < -50) {
+        // Se arrastou para a direita
+        prevBanner();
+    }
+});
+
