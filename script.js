@@ -180,3 +180,13 @@ bannerImage.addEventListener('touchend', (e) => {
     }
 });
 
+// Seleciona o ícone do menu hamburguer e a lista de navegação
+const hamburger = document.querySelector('.hamburger');
+const menu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', function() {
+    this.classList.toggle('active'); // Alterna o estado do ícone
+    menu.classList.toggle('active'); // Alterna a visibilidade do menu
+});
+
+
