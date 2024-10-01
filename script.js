@@ -46,6 +46,15 @@ function addToCart(productName, productPrice) {
             messageDiv.style.display = 'none';
         }, 500);
     }, 2000);
+
+    // Destacar o botão clicado
+    const button = event.target; // Obtém o botão que foi clicado
+    button.classList.add('button-green'); // Adiciona a classe que muda a cor
+
+    // Remove a classe após 1 segundo (1000 ms)
+    setTimeout(() => {
+        button.classList.remove('button-green');
+    }, 1000);
 }
 
 // Função para remover itens do carrinho
