@@ -32,6 +32,14 @@ function addToCart(productName, productPrice) {
 
     localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
 
+    // Animação de feedback visual no ícone do carrinho
+    const cartIcon = document.getElementById('cart'); // Seleciona o div com ID 'cart'
+    cartIcon.classList.add('shake-cart'); // Adiciona a classe de animação
+
+    setTimeout(() => {
+        cartIcon.classList.remove('shake-cart'); // Remove a classe após 500ms (tempo da animação)
+    }, 500);
+
     // Atualiza o contador de itens do carrinho na página
     loadCartFromLocalStorage();
 

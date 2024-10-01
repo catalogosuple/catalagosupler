@@ -284,7 +284,18 @@
             color: white; /* Texto em branco durante a animação */
         }
 
+        /* Animação de chacoalhar o carrinho */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
 
+        .shake-cart {
+            animation: shake 0.5s;
+        }
         /* Estilos do carrinho */
         #cart {
             position: fixed;
@@ -538,7 +549,7 @@
             top: 85px;
             right: 15px;
             font-size: 1.3em;
-            padding: 10px;
+            padding: 15px;
         }
 
         #cart i {
@@ -621,7 +632,7 @@
                         top: 85px;
                         right: 15px;
                         font-size: 1.3em;
-                        padding: 10px;
+                        padding: 15px;
                     }
             
                     #cart i {
@@ -650,7 +661,7 @@
             top: 85px;
             right: 15px;
             font-size: 1.3em;
-            padding: 10px;
+            padding: 15px;
         }
 
         #cart i {
@@ -754,6 +765,14 @@ function addToCart(productName, productPrice) {
 
     updateCartCount();
     saveCartToLocalStorage(); // Salvar o carrinho no localStorage
+
+    // Animação de feedback visual no ícone do carrinho
+    const cartIcon = document.getElementById('cart'); // Seleciona o div com ID 'cart'
+    cartIcon.classList.add('shake-cart'); // Adiciona a classe de animação
+
+    setTimeout(() => {
+        cartIcon.classList.remove('shake-cart'); // Remove a classe após 500ms (tempo da animação)
+    }, 500);
 
     // Exibir mensagem de feedback
     const messageDiv = document.getElementById('message');

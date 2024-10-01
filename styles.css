@@ -533,6 +533,19 @@ footer .payment-info img {
     transition: opacity 0.5s;
 }
 
+/* Animação de chacoalhar o carrinho */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-cart {
+    animation: shake 0.5s;
+}
+
 
 /* Estilos do carrinho */
 #cart {
@@ -573,7 +586,7 @@ footer .payment-info img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .cart-item button {
