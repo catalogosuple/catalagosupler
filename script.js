@@ -1,9 +1,23 @@
-// Carrinho de Compras
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-updateCartCount(); // Atualiza a contagem de itens no carrinho ao carregar a página
+// Função para carregar o carrinho ao carregar a página
+function loadCartFromLocalStorage() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (cart.length === 0) {
+        document.getElementById('cart-count').innerText = '0'; // Zera o contador
+    } else {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cart-count').innerText = totalItems;
+    }
+}
+
+// Evento para carregar o carrinho assim que a página é carregada
+document.addEventListener('DOMContentLoaded', function() {
+    loadCartFromLocalStorage();
+});
 
 // Função para adicionar itens ao carrinho
 function addToCart(productName, productPrice) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const productIndex = cart.findIndex(item => item.name === productName);
     
     if (productIndex !== -1) {
@@ -16,84 +30,74 @@ function addToCart(productName, productPrice) {
         });
     }
 
-    updateCartCount();
-    saveCartToLocalStorage();
+    localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho no localStorage
 
-    // Exibir mensagem de feedback
+    // Atualiza o contador de itens do carrinho na página
+    loadCartFromLocalStorage();
+
+    // Feedback de item adicionado
     const messageDiv = document.getElementById('message');
     messageDiv.innerText = `${productName} adicionado ao carrinho!`;
-    messageDiv.style.display = 'block'; 
-    messageDiv.style.opacity = '1'; 
+    messageDiv.style.display = 'block';
+    messageDiv.style.opacity = '1';
     setTimeout(() => {
-        messageDiv.style.opacity = '0'; 
+        messageDiv.style.opacity = '0';
         setTimeout(() => {
-            messageDiv.style.display = 'none'; 
-        }, 500); 
+            messageDiv.style.display = 'none';
+        }, 500);
     }, 2000);
-
-    const button = event.target; 
-    button.classList.add('button-green'); 
-
-    setTimeout(() => {
-        button.classList.remove('button-green');
-    }, 1000);
 }
 
-// Função para salvar o carrinho no localStorage
-function saveCartToLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart));
+// Função para remover itens do carrinho
+function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1); // Remove o item pelo índice
+    localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
+    loadCartFromLocalStorage(); // Atualiza a contagem do carrinho
 }
 
-// Função para atualizar o número de itens no carrinho
-function updateCartCount() {
-    document.getElementById('cart-count').innerText = cart.reduce((total, item) => total + item.quantity, 0);
-}
-
-// Função para mostrar o carrinho
+// Função para exibir o carrinho
 function showCart() {
-    if (cart.length === 0) {
-        alert('Seu carrinho está vazio.');
-        return;
-    }
-
     const cartItemsContainer = document.getElementById('cart-items');
-    cartItemsContainer.innerHTML = ''; 
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartItemsContainer.innerHTML = ''; // Limpa o conteúdo anterior
 
-    cart.forEach((item, index) => {
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('cart-item');
-        itemElement.innerHTML = `
-            <p>${item.name} - R$${item.price} x ${item.quantity}</p>
-            <button onclick="removeFromCart(${index})">Remover</button>
-        `;
-        cartItemsContainer.appendChild(itemElement);
-    });
+    if (cart.length === 0) {
+        const emptyMessage = document.createElement('p');
+        emptyMessage.innerText = 'Seu carrinho está vazio.';
+        emptyMessage.style.textAlign = 'center';
+        emptyMessage.style.fontWeight = 'bold';
+        cartItemsContainer.appendChild(emptyMessage);
+    } else {
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <p>${item.name} - R$${item.price} x ${item.quantity}</p>
+                <button onclick="removeFromCart(${index})">Remover</button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+        });
+    }
 
     document.getElementById('cart-modal').style.display = 'flex';
 }
 
-// Função para remover um item do carrinho
-function removeFromCart(index) {
-    cart.splice(index, 1); 
-    updateCartCount();
-    saveCartToLocalStorage(); 
-    showCart(); 
-}
-
-// Função para fechar o modal do carrinho
+// Fecha o modal do carrinho
 function closeCart() {
     document.getElementById('cart-modal').style.display = 'none';
 }
 
 // Função para enviar o carrinho para o WhatsApp
 function sendToWhatsApp() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     if (cart.length === 0) {
         alert('Seu carrinho está vazio.');
         return;
     }
 
     let message = 'Olá, gostaria de comprar os seguintes itens:\n\n';
-
     cart.forEach(item => {
         message += `${item.name} - R$${item.price.toFixed(2)} x ${item.quantity}\n`;
     });
@@ -104,30 +108,8 @@ function sendToWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://api.whatsapp.com/send?phone=5585985934633&text=${encodedMessage}`, '_blank');
 
-    closeCart(); 
+    closeCart();
 }
-
-// Forçar atualização do carrinho ao sair da página
-window.onbeforeunload = function() {
-    localStorage.setItem('cart', JSON.stringify(cart)); // Salvar o carrinho
-};
-
-// Atualiza o carrinho ao carregar a página
-window.addEventListener('load', () => {
-    updateCartCount(); // Atualiza a contagem ao carregar
-});
-
-// Atualiza o carrinho ao mudar a visibilidade da página
-document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') {
-        updateCartCount(); // Atualiza quando a página se torna visível
-    }
-});
-
-// Intervalo para atualização do carrinho (opcional, mas pode ser útil)
-setInterval(() => {
-    updateCartCount();
-}, 3000); // Atualiza a cada 3 segundos
 
 
 
