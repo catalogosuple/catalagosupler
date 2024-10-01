@@ -1,8 +1,6 @@
 // Carrinho de Compras
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Carregar o carrinho ao inicializar
-updateCartCount();
+updateCartCount(); // Atualiza a contagem de itens no carrinho ao carregar a página
 
 // Função para adicionar itens ao carrinho
 function addToCart(productName, productPrice) {
@@ -19,25 +17,23 @@ function addToCart(productName, productPrice) {
     }
 
     updateCartCount();
-    saveCartToLocalStorage(); // Salvar o carrinho no localStorage
+    saveCartToLocalStorage();
 
     // Exibir mensagem de feedback
     const messageDiv = document.getElementById('message');
     messageDiv.innerText = `${productName} adicionado ao carrinho!`;
-    messageDiv.style.display = 'block'; // Mostra a mensagem
-    messageDiv.style.opacity = '1'; // Define a opacidade para 1
+    messageDiv.style.display = 'block'; 
+    messageDiv.style.opacity = '1'; 
     setTimeout(() => {
-        messageDiv.style.opacity = '0'; // Após 3 segundos, define a opacidade para 0
+        messageDiv.style.opacity = '0'; 
         setTimeout(() => {
-            messageDiv.style.display = 'none'; // Esconde o elemento
-        }, 500); // Espera a transição de opacidade antes de esconder
-    }, 2000); // Tempo de exibição da mensagem
-    
-    // Destacar o botão clicado
-    const button = event.target; // Obtém o botão que foi clicado
-    button.classList.add('button-green'); // Adiciona a classe que muda a cor
+            messageDiv.style.display = 'none'; 
+        }, 500); 
+    }, 2000);
 
-    // Remove a classe após 1 segundo (1000 ms)
+    const button = event.target; 
+    button.classList.add('button-green'); 
+
     setTimeout(() => {
         button.classList.remove('button-green');
     }, 1000);
@@ -55,32 +51,33 @@ function updateCartCount() {
 
 // Função para mostrar o carrinho
 function showCart() {
-    const cartItemsContainer = document.getElementById('cart-items');
-    cartItemsContainer.innerHTML = ''; // Limpa os itens anteriores
-
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
-    } else {
-        cart.forEach((item, index) => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('cart-item');
-            itemElement.innerHTML = `
-                <p>${item.name} - R$${item.price.toFixed(2)} x ${item.quantity}</p>
-                <button onclick="removeFromCart(${index})">Remover</button>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-        });
+        alert('Seu carrinho está vazio.');
+        return;
     }
+
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = ''; 
+
+    cart.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+        itemElement.innerHTML = `
+            <p>${item.name} - R$${item.price} x ${item.quantity}</p>
+            <button onclick="removeFromCart(${index})">Remover</button>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+    });
 
     document.getElementById('cart-modal').style.display = 'flex';
 }
 
 // Função para remover um item do carrinho
 function removeFromCart(index) {
-    cart.splice(index, 1); // Remove o item do array de carrinho
+    cart.splice(index, 1); 
     updateCartCount();
-    saveCartToLocalStorage(); // Atualiza o localStorage após a remoção
-    showCart(); // Atualiza a exibição do carrinho
+    saveCartToLocalStorage(); 
+    showCart(); 
 }
 
 // Função para fechar o modal do carrinho
@@ -107,8 +104,21 @@ function sendToWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://api.whatsapp.com/send?phone=5585985934633&text=${encodedMessage}`, '_blank');
 
-    closeCart(); // Fecha o modal após o envio
+    closeCart(); 
 }
+
+// Detectar mudanças de visibilidade da página
+document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible') {
+        updateCartCount();
+    }
+});
+
+// Atualizar carrinho ao voltar
+window.onpopstate = function(event) {
+    updateCartCount();
+};
+
 
 
 function nextImage(button) {
