@@ -573,7 +573,7 @@ footer .payment-info img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .cart-item button {
@@ -733,6 +733,12 @@ header {
     margin: 0 8px;
 }
 
+#cart {
+    top: 85px;
+    right: 15px;
+    font-size: 1.3em;
+    padding: 15px;
+}
 
 .add-to-cart {
     font-size: 14px;
@@ -858,7 +864,7 @@ header {
     top: 85px;
     right: 15px;
     font-size: 1.3em;
-    padding: 10px;
+    padding: 15px;
 }
 
 #cart i {
