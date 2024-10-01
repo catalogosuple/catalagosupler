@@ -749,7 +749,7 @@ function addToCart(productName, productPrice) {
     updateCartCount();
     saveCartToLocalStorage();
 
-    // Exibir mensagem de feedback
+    // Mensagem de feedback
     const messageDiv = document.getElementById('message');
     messageDiv.innerText = `${productName} adicionado ao carrinho!`;
     messageDiv.style.display = 'block'; 
@@ -761,34 +761,32 @@ function addToCart(productName, productPrice) {
         }, 500); 
     }, 2000);
 
-    const button = event.target; 
-    button.classList.add('button-green'); 
-
+    // Redireciona para a página inicial após um breve delay
     setTimeout(() => {
-        button.classList.remove('button-green');
-    }, 1000);
-}
-
-// Função para salvar o carrinho no localStorage
-function saveCartToLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-// Função para atualizar o número de itens no carrinho
-function updateCartCount() {
-    document.getElementById('cart-count').innerText = cart.reduce((total, item) => total + item.quantity, 0);
+        window.location.href = '../index.html'; // Altere para o nome da sua página inicial
+    }, 2000); // 2 segundos para que o usuário veja a mensagem de feedback
 }
 
 // Função para mostrar o carrinho
 function showCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+    // Verifica se o carrinho está vazio
     if (cart.length === 0) {
-        alert('Seu carrinho está vazio.');
-        return;
+        // Cria uma mensagem de aviso e a adiciona ao modal
+        const emptyMessage = document.createElement('p');
+        emptyMessage.innerText = 'Seu carrinho está vazio.';
+        emptyMessage.style.textAlign = 'center'; // Centraliza o texto
+        emptyMessage.style.fontWeight = 'bold'; // Torna o texto mais forte
+        cartItemsContainer.appendChild(emptyMessage); // Adiciona a mensagem ao container
+
+        // Exibe o modal
+        document.getElementById('cart-modal').style.display = 'flex';
+        return; // Para a função aqui se o carrinho estiver vazio
     }
 
-    const cartItemsContainer = document.getElementById('cart-items');
-    cartItemsContainer.innerHTML = ''; 
-
+    // Caso o carrinho não esteja vazio, exibe os itens
     cart.forEach((item, index) => {
         const itemElement = document.createElement('div');
         itemElement.classList.add('cart-item');
@@ -799,10 +797,18 @@ function showCart() {
         cartItemsContainer.appendChild(itemElement);
     });
 
+    // Exibe o modal
     document.getElementById('cart-modal').style.display = 'flex';
 }
 
-// Função para remover um item do carrinho
+function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+    document.getElementById('cart-count').innerText = cart.reduce((total, item) => total + item.quantity, 0);
+}
+
 function removeFromCart(index) {
     cart.splice(index, 1); 
     updateCartCount();
@@ -810,12 +816,10 @@ function removeFromCart(index) {
     showCart(); 
 }
 
-// Função para fechar o modal do carrinho
 function closeCart() {
     document.getElementById('cart-modal').style.display = 'none';
 }
 
-// Função para enviar o carrinho para o WhatsApp
 function sendToWhatsApp() {
     if (cart.length === 0) {
         alert('Seu carrinho está vazio.');
@@ -842,24 +846,10 @@ window.onbeforeunload = function() {
     localStorage.setItem('cart', JSON.stringify(cart)); // Salvar o carrinho
 };
 
-// Atualiza o carrinho ao carregar a página
-window.addEventListener('load', () => {
-    updateCartCount(); // Atualiza a contagem ao carregar
-});
-
-// Atualiza o carrinho ao mudar a visibilidade da página
-document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') {
-        updateCartCount(); // Atualiza quando a página se torna visível
-    }
-});
-
-// Intervalo para atualização do carrinho (opcional, mas pode ser útil)
+// Intervalo para atualização do carrinho
 setInterval(() => {
     updateCartCount();
 }, 3000); // Atualiza a cada 3 segundos
-
-
 
 
 function nextImage(button) {
