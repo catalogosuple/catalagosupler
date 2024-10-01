@@ -1,5 +1,5 @@
 // Carrinho de Compras
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Função para adicionar itens ao carrinho
 function addToCart(productName, productPrice) {
@@ -8,11 +8,16 @@ function addToCart(productName, productPrice) {
     if (productIndex !== -1) {
         cart[productIndex].quantity += 1;
     } else {
-        cart.push({ name: productName, price: productPrice, quantity: 1 });
+        cart.push({
+            name: productName,
+            price: productPrice,
+            quantity: 1
+        });
     }
 
     updateCartCount();
-    
+    saveCartToLocalStorage(); // Salvar o carrinho no localStorage
+
     // Exibir mensagem de feedback
     const messageDiv = document.getElementById('message');
     messageDiv.innerText = `${productName} adicionado ao carrinho!`;
@@ -23,9 +28,23 @@ function addToCart(productName, productPrice) {
         setTimeout(() => {
             messageDiv.style.display = 'none'; // Esconde o elemento
         }, 500); // Espera a transição de opacidade antes de esconder
-    }, 3000); // Tempo de exibição da mensagem
+    }, 2000); // Tempo de exibição da mensagem
+    
+
+    // Destacar o botão clicado
+    const button = event.target; // Obtém o botão que foi clicado
+    button.classList.add('button-green'); // Adiciona a classe que muda a cor
+
+    // Remove a classe após 1 segundo (1000 ms)
+    setTimeout(() => {
+        button.classList.remove('button-green');
+    }, 1000);
 }
 
+// Função para salvar o carrinho no localStorage
+function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 // Função para atualizar o número de itens no carrinho
 function updateCartCount() {
@@ -59,6 +78,7 @@ function showCart() {
 function removeFromCart(index) {
     cart.splice(index, 1); // Remove o item do array de carrinho
     updateCartCount();
+    saveCartToLocalStorage(); // Atualiza o localStorage após a remoção
     showCart(); // Atualiza a exibição do carrinho
 }
 
@@ -189,4 +209,5 @@ hamburger.addEventListener('click', function() {
     menu.classList.toggle('active'); // Alterna a visibilidade do menu
 });
 
-
+// Atualiza a contagem de itens do carrinho ao carregar a página
+updateCartCount();

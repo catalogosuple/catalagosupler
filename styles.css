@@ -1,30 +1,43 @@
 body {
-    font-family: 'Roboto', sans-serif; /* Fonte moderna e limpa */
-    background-color: #f5f5f5; /* Branco claro para o fundo */
-    color: #333; /* Texto escuro para contraste */
-    margin: 0; /* Garante que não haja espaço ao redor do corpo */
-    padding: 0; /* Garante que não haja preenchimento ao redor do corpo */
+    font-family: 'Roboto', sans-serif;
+    /* Fonte moderna e limpa */
+    background-color: #f5f5f5;
+    /* Branco claro para o fundo */
+    color: #333;
+    /* Texto escuro para contraste */
+    margin: 0;
+    /* Garante que não haja espaço ao redor do corpo */
+    padding: 0;
+    /* Garante que não haja preenchimento ao redor do corpo */
 }
 
 header {
     background-image: url('img/bannerheader.png');
-    background-size: cover; /* A imagem cobre todo o header */
-    background-position: center; /* Centraliza a imagem */
-    height: 500px; /* Altura do header */
-    background-color: #ffffff; /* Branco para o cabeçalho */
+    background-size: cover;
+    /* A imagem cobre todo o header */
+    background-position: center;
+    /* Centraliza a imagem */
+    height: 500px;
+    /* Altura do header */
+    background-color: #ffffff;
+    /* Branco para o cabeçalho */
     position: relative;
     width: 100%;
     text-align: center;
-    border-bottom: 1px solid #ddd; /* Linha sutil para separar o cabeçalho */
+    border-bottom: 1px solid #ddd;
+    /* Linha sutil para separar o cabeçalho */
     display: flex;
-    justify-content: center; /* Centraliza os elementos horizontalmente */
-    align-items: center; /* Centraliza os elementos verticalmente */
+    justify-content: center;
+    /* Centraliza os elementos horizontalmente */
+    align-items: center;
+    /* Centraliza os elementos verticalmente */
 }
 
 header h1 {
     margin: 5px;
     font-size: 1.6em;
-    color: #333; /* Texto escuro */
+    color: #333;
+    /* Texto escuro */
 }
 
 .logo {
@@ -32,162 +45,183 @@ header h1 {
     position: absolute;
     top: 5px;
     left: 15px;
-    width: 50px; /* Tamanho da logo */
+    width: 50px;
+    /* Tamanho da logo */
     height: 50px;
-    border-radius: 50%; /* Torna a imagem redonda */
-    border: 2px solid #ddd; /* Borda para a logo */
-   
+    border-radius: 50%;
+    /* Torna a imagem redonda */
+    border: 2px solid #ddd;
+    /* Borda para a logo */
+
 }
 
 
-    /* Estilo para o banner */
-    #bannerContainer {
-        position: relative;
-        overflow: hidden;
-        max-width: 1200px; /* Largura máxima do banner */
-        margin: 20px auto; /* Centraliza o banner */
-    }
+/* Estilo para o banner */
+#bannerContainer {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    /* Largura máxima do banner */
+    margin: 20px auto;
+    /* Centraliza o banner */
+}
 
-    #bannerImage {
-        width: 100%;
-        height: 500px; /* Altura padrão para telas menores */
-        object-fit: cover;
-    }
+#bannerImage {
+    width: 100%;
+    height: 500px;
+    /* Altura padrão para telas menores */
+    object-fit: cover;
+}
 
-    .indicator-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-    }
+.indicator-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
 
-    .indicator {
-        width: 15px;
-        height: 15px;
-        background-color: #ccc;
-        border-radius: 50%;
-        margin: 0 5px;
-        cursor: pointer;
-        transition: background-color 0.1s;
-    }
+.indicator {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
 
-    .indicator.active {
-        background-color: #333;
-    }
+.indicator.active {
+    background-color: #333;
+}
 
-        
 
-        .carousel {
-            max-width: 400px;
-            position: relative;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-    
-        .carousel img {
-            width: 100%;
-            height: auto;
-            display: none;
-        }
-    
-        .carousel img.active {
-            display: block;
-        }
 
-        .carousel-indicators {
-            text-align: center;
-            margin-top: 10px;
-        }
+.carousel {
+    max-width: 400px;
+    position: relative;
+    margin: 20px auto;
+    overflow: hidden;
+}
 
-        nav {
-            position: fixed; /* Fixa o menu no topo da tela */
-            top: 0; /* Define o menu no topo da página */
-            width: 100%; /* Garante que o menu ocupe toda a largura da tela */
-            z-index: 1000; /* Coloca o menu acima de outros elementos */
-            background-color: rgb(226, 10, 10); /* Cor de fundo */
-            padding: 25px 0; /* Espaçamento no menu */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destacar o menu */
-        }
-        
-        /* Estilos gerais do menu de navegação */
-        .nav-menu {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            padding: 10px;
-            background-color: #ffffff;
-            list-style: none;
-            margin: 0;
-        }
-        
-        /* Estilos dos itens de menu */
-        .nav-menu li {
-            display: inline;
-            margin: 0 15px;
-            padding: 3px;
-        }
-        
-        .nav-menu li a {
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            color: white !important;
-        }
-        
-        /* Ícone hambúrguer */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 21px;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px; /* Define o ícone no canto superior direito */
-        }
-        
-        .hamburger span {
-            display: block;
-            width: 30px;  /* Largura do hambúrguer fechado */
-            height: 3px;  /* Espessura das linhas */
-            background-color: rgb(255, 255, 255);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+.carousel img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
 
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 6px;
-            width: 20px;
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            width: 20px;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: -8px;
-            width: 20px;
-        }
+.carousel img.active {
+    display: block;
+}
+
+.carousel-indicators {
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav {
+    position: fixed;
+    /* Fixa o menu no topo da tela */
+    top: 0;
+    /* Define o menu no topo da página */
+    width: 100%;
+    /* Garante que o menu ocupe toda a largura da tela */
+    z-index: 1000;
+    /* Coloca o menu acima de outros elementos */
+    background-color: rgb(226, 10, 10);
+    /* Cor de fundo */
+    padding: 25px 0;
+    /* Espaçamento no menu */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Adiciona uma sombra para destacar o menu */
+}
+
+/* Estilos gerais do menu de navegação */
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #ffffff;
+    list-style: none;
+    margin: 0;
+}
+
+/* Estilos dos itens de menu */
+.nav-menu li {
+    display: inline;
+    margin: 0 15px;
+    padding: 3px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: white !important;
+}
+
+/* Ícone hambúrguer */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* Define o ícone no canto superior direito */
+}
+
+.hamburger span {
+    display: block;
+    width: 30px;
+    /* Largura do hambúrguer fechado */
+    height: 3px;
+    /* Espessura das linhas */
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 6px;
+    width: 20px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    width: 20px;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: -8px;
+    width: 20px;
+}
 
 .hero {
     text-align: center;
     padding: 30px 20px;
-    background-color: #ffffff; /* Fundo branco para destacar o herói */
-    border-bottom: 1px solid #ddd; /* Linha sutil para separar a seção */
+    background-color: #ffffff;
+    /* Fundo branco para destacar o herói */
+    border-bottom: 1px solid #ddd;
+    /* Linha sutil para separar a seção */
 }
 
 .hero h1 {
     font-size: 2.5em;
-    color: #f5a623; /* Amarelo suave */
+    color: #f5a623;
+    /* Amarelo suave */
 }
 
 .btn {
-    background-color: #f5a623; /* Amarelo suave */
-    color: #ffffff; /* Texto claro para contraste */
+    background-color: #f5a623;
+    /* Amarelo suave */
+    color: #ffffff;
+    /* Texto claro para contraste */
     padding: 12px 24px;
     border: none;
     border-radius: 6px;
@@ -197,7 +231,8 @@ header h1 {
 }
 
 .btn:hover {
-    background-color: #f39c12; /* Amarelo mais escuro */
+    background-color: #f39c12;
+    /* Amarelo mais escuro */
 }
 
 .products {
@@ -206,36 +241,47 @@ header h1 {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
-    max-width: 1200px; /* Largura máxima do container */
-    margin: 0 auto; /* Centraliza o container */
+    max-width: 1200px;
+    /* Largura máxima do container */
+    margin: 0 auto;
+    /* Centraliza o container */
+    transition: transform 0.3s;
 }
 
+
 .product-card {
-    background-color: #ffffff; /* Branco */
-    border: 1px solid #ddd; /* Borda sutil */
+    background-color: #ffffff;
+    /* Branco */
+    border: 1px solid #ddd;
+    /* Borda sutil */
     border-radius: 8px;
     padding: 15px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para um efeito 3D */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra leve para um efeito 3D */
     position: relative;
-    overflow: hidden; /* Garante que a imagem não saia do card */
+    overflow: hidden;
+    /* Garante que a imagem não saia do card */
     display: flex;
-    flex-direction: column; /* Para alinhar itens verticalmente */
-    
+    flex-direction: column;
+    /* Para alinhar itens verticalmente */
+
 }
+
 
 #producth2 {
     color: #1a1001;
     font-size: 17px;
 }
- 
+
 .product-card a {
     color: #f39c12;
 }
 
 /* Estilo do preço do produto */
 .product-card .price {
-    font-size: 1.1em; /* Tamanho da fonte ajustado */
+    font-size: 1.1em;
+    /* Tamanho da fonte ajustado */
     margin-bottom: 10px;
     margin-top: auto;
     font-weight: bold;
@@ -244,34 +290,48 @@ header h1 {
 /* Ajuste do tamanho da imagem do produto */
 .product-card img {
     max-width: 200px;
-    width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
-    height: auto; /* Mantém a proporção da imagem */
-    object-fit: cover; /* Corta a imagem se necessário, mantendo a centralização */
+    width: 100%;
+    /* Garante que a imagem ocupe toda a largura do contêiner */
+    height: auto;
+    /* Mantém a proporção da imagem */
+    object-fit: cover;
+    /* Corta a imagem se necessário, mantendo a centralização */
 }
 
+
 .product-card img.secondary {
-    display: none; /* Esconde a imagem secundária por padrão */
+    display: none;
+    /* Esconde a imagem secundária por padrão */
 }
 
 .product-card.active img.primary {
-    display: none; /* Esconde a imagem primária quando o card está ativo */
+    display: none;
+    /* Esconde a imagem primária quando o card está ativo */
 }
 
 .product-card.active img.secondary {
-    display: block; /* Mostra a imagem secundária quando o card está ativo */
+    display: block;
+    /* Mostra a imagem secundária quando o card está ativo */
 }
 
 .product-card h2 {
-    color: #f5a623; /* Amarelo suave */
-    font-size: 1.1em; /* Ajustado para um tamanho menor */
-    margin: 0; /* Remove margem para ajustar o layout */
+    color: #f5a623;
+    /* Amarelo suave */
+    font-size: 1.1em;
+    /* Ajustado para um tamanho menor */
+    margin: 0;
+    /* Remove margem para ajustar o layout */
 }
 
 .product-card p {
-    display: block; /* Exibe a descrição breve */
-    max-height: 80px; /* Limita a altura da descrição para evitar excesso de espaço */
-    overflow: hidden; /* Oculta o excesso de texto */
-    margin-bottom: 15px; /* Espaço entre a descrição e o botão */
+    display: block;
+    /* Exibe a descrição breve */
+    max-height: 80px;
+    /* Limita a altura da descrição para evitar excesso de espaço */
+    overflow: hidden;
+    /* Oculta o excesso de texto */
+    margin-bottom: 15px;
+    /* Espaço entre a descrição e o botão */
 }
 
 .add-to-cart {
@@ -282,22 +342,29 @@ header h1 {
     padding: 10px 20px; /* Padding ajustado */
     font-size: 16px; /* Tamanho da fonte adequado */
     cursor: pointer; /* Mostra o ponteiro de mão no hover */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+    transition: transform 0.2s ease, background-color 0.5s ease; /* Transição suave */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
     margin-top: auto; /* Garante que o botão fique no fundo do cartão */
     display: block; /* Garante que o botão ocupe a largura disponível */
-
 }
 
-.add-to-cart:hover {
-    background-color: #e64a19; /* Cor de fundo mais escura no hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+
+
+.button-green {
+    background-color: green; /* Cor verde */
+    color: white; /* Cor do texto */
+    transition: background-color 0.3s ease; /* Transição suave */
 }
+
+
+
 
 .arrow-button {
-    background-color: #f5a52300; /* Amarelo suave */
+    background-color: #f5a52300;
+    /* Amarelo suave */
     border: none;
-    color: #706b6b98; /* Texto claro para contraste */
+    color: #706b6b98;
+    /* Texto claro para contraste */
     padding: 2px;
     border-radius: 50%;
     cursor: pointer;
@@ -327,8 +394,10 @@ header h1 {
 }
 
 .cart-item {
-    background-color: #ffffff; /* Branco */
-    border: 1px solid #ddd; /* Borda sutil */
+    background-color: #ffffff;
+    /* Branco */
+    border: 1px solid #ddd;
+    /* Borda sutil */
     border-radius: 6px;
     padding: 12px;
     margin: 10px;
@@ -338,8 +407,10 @@ header h1 {
 }
 
 .remove-from-cart {
-    background-color: #e74c3c; /* Vermelho para destacar a remoção */
-    color: #ffffff; /* Texto claro para contraste */
+    background-color: #e74c3c;
+    /* Vermelho para destacar a remoção */
+    color: #ffffff;
+    /* Texto claro para contraste */
     border: none;
     padding: 8px 15px;
     border-radius: 5px;
@@ -348,7 +419,8 @@ header h1 {
 }
 
 .remove-from-cart:hover {
-    background-color: #c0392b; /* Vermelho mais escuro */
+    background-color: #c0392b;
+    /* Vermelho mais escuro */
 }
 
 .total {
@@ -357,207 +429,225 @@ header h1 {
 }
 
 footer {
-    background-color: #ffffff; /* Branco */
-    color: #333; /* Texto escuro */
+    background-color: #ffffff;
+    /* Branco */
+    color: #333;
+    /* Texto escuro */
     text-align: center;
     padding: 15px;
-    border-top: 1px solid #ddd; /* Linha sutil para separar o rodapé */
-    position: relative; /* Para posicionar o contêiner de imagem */
-    }
+    border-top: 1px solid #ddd;
+    /* Linha sutil para separar o rodapé */
+    position: relative;
+    /* Para posicionar o contêiner de imagem */
+}
 
-    footer a {
-        color: #f39c12;
-    }
+footer a {
+    color: #f39c12;
+}
 
-    footer .payment-info {
-        margin-top: 15px; /* Espaço acima da imagem */
-    }
+footer .payment-info {
+    margin-top: 15px;
+    /* Espaço acima da imagem */
+}
 
-    footer .payment-info img {
-        width: 110px;
-        max-width: 100%; /* Ajusta a imagem para a largura do contêiner */
-        height: auto; /* Mantém a proporção da imagem */
-        display: inline-block; /* Mantém a imagem dentro do fluxo do texto */
-    }
+footer .payment-info img {
+    width: 110px;
+    max-width: 100%;
+    /* Ajusta a imagem para a largura do contêiner */
+    height: auto;
+    /* Mantém a proporção da imagem */
+    display: inline-block;
+    /* Mantém a imagem dentro do fluxo do texto */
+}
 
 .whatsapp {
     display: block;
     margin: 10px 0;
-    color: #f5a623; /* Amarelo suave */
+    color: #f5a623;
+    /* Amarelo suave */
 }
 
-        /* Estilos botão WhatsApp */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 45px;
-            right: 27px;
-            z-index: 999;
-        }
-    
-        .whatsapp-btn img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-    
-        .whatsapp-btn img:hover {
-            transform: scale(1.1);
-        }
-    
-        .tooltip {
-            visibility: visible;
-            font-size: 12px;
-            width: 110px;
-            background-color: #4b52589d;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 100%;
-            left: 50%;
-            margin-left: -55px;
-            opacity: 1;
-            transition: opacity 0.3s;
-        }
-    
-        .whatsapp-btn:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-            background-color: #4b5258;
-        }
+/* Estilos botão WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 45px;
+    right: 27px;
+    z-index: 999;
+}
+
+.whatsapp-btn img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.whatsapp-btn img:hover {
+    transform: scale(1.1);
+}
+
+.tooltip {
+    visibility: visible;
+    font-size: 12px;
+    width: 110px;
+    background-color: #4b52589d;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -55px;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.whatsapp-btn:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    background-color: #4b5258;
+}
 
 
-        #message {
-            position: fixed;
-            bottom: 50%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #127e12c4; /* Cor de fundo verde */
-            color: white; /* Texto branco */
-            padding: 15px;
-            border-radius: 15px;
-            z-index: 1000;
-            display: none; /* Inicialmente escondido */
-            transition: opacity 0.5s;
-        }
-        
+#message {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #127e12c4;
+    /* Cor de fundo verde */
+    color: white;
+    /* Texto branco */
+    padding: 15px;
+    border-radius: 15px;
+    z-index: 1000;
+    display: none;
+    /* Inicialmente escondido */
+    transition: opacity 0.5s;
+}
 
-        /* Estilos do carrinho */
-        #cart {
-            position: fixed;
-            top: 15px; /* Ajuste a distância do topo conforme necessário */
-            right: 35px; /* Ajuste a distância da borda direita conforme necessário */
-            background-color: #ff5722;
-            color: #fff;
-            padding: 15px; /* Ajuste o padding para um tamanho menor */
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em; /* Reduz o tamanho da fonte */
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    
-        #cart:hover {
-            background-color: #f5a623;
-        }
-    
-        #cart i {
-            margin-right: 5px; /* Ajusta o espaço entre o ícone e o texto */
-        }
-    
-        .cart-item {
-            background-color: #1a1a1a;
-            border: 1px solid #f5a623;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    
-        .cart-item button {
-            background-color: #f5a623;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-    
-        .cart-item button:hover {
-            background-color: #f5a623;
-        }
-    
-        /* Estilo específico para o botão "Enviar pedido" */
-        #btn-submit {
-            background-color: #f5a623;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-    
-        #btn-submit:hover {
-            background-color: #f5a623;
-        }
 
-                /* Estilos do modal */
-        .modal {
-            display: none; /* Oculta o modal por padrão */
-            position: fixed;
-            z-index: 1002;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            }
-            
-                /* Estilo da imagem no modal */
-        .modal-content {
-            position: relative;
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            }
-            
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            }
-        
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 25px;
-            color: #fff;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-            }
-            
-        .close:hover {
-            color: #f5a623;
-            }     
-                 
-            
-       
+/* Estilos do carrinho */
+#cart {
+    position: fixed;
+    top: 15px;
+    /* Ajuste a distância do topo conforme necessário */
+    right: 35px;
+    /* Ajuste a distância da borda direita conforme necessário */
+    background-color: #ff5722;
+    color: #fff;
+    padding: 15px;
+    /* Ajuste o padding para um tamanho menor */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    /* Reduz o tamanho da fonte */
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cart:hover {
+    background-color: #f5a623;
+}
+
+#cart i {
+    margin-right: 5px;
+    /* Ajusta o espaço entre o ícone e o texto */
+}
+
+.cart-item {
+    background-color: #1a1a1a;
+    border: 1px solid #f5a623;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item button {
+    background-color: #f5a623;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.cart-item button:hover {
+    background-color: #f5a623;
+}
+
+/* Estilo específico para o botão "Enviar pedido" */
+#btn-submit {
+    background-color: #f5a623;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#btn-submit:hover {
+    background-color: #f5a623;
+}
+
+/* Estilos do modal */
+.modal {
+    display: none;
+    /* Oculta o modal por padrão */
+    position: fixed;
+    z-index: 1002;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilo da imagem no modal */
+.modal-content {
+    position: relative;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #f5a623;
+}
+
+
+
 /* Responsividade */
 
 @media (min-width: 768px) {
@@ -566,18 +656,22 @@ footer {
     }
 
     .hamburger {
-        display: none; /* Esconde o ícone de hambúrguer em telas grandes */
+        display: none;
+        /* Esconde o ícone de hambúrguer em telas grandes */
     }
+
     .nav-menu {
-        display: block; /* Assegure-se de que o menu esteja visível */
+        display: block;
+        /* Assegure-se de que o menu esteja visível */
     }
+
     .nav-menu a {
         justify-content: space-around;
     }
-    
+
     .logo {
-       display: block !important;
-       
+        display: block !important;
+
     }
 
 }
@@ -585,25 +679,30 @@ footer {
 
 @media (max-width: 768px) {
     .products {
-        grid-template-columns: repeat(2, 1fr); /* Duas colunas em telas menores */ /* Menos espaço em telas menores */
+        grid-template-columns: repeat(2, 1fr);
+        /* Duas colunas em telas menores */
+        /* Menos espaço em telas menores */
         gap: 5px;
     }
 }
 
 .logo {
-   display: none;
-   
+    display: none;
+
 }
 
 header {
     background-image: url('img/headermobile.png');
-    background-size: cover; /* Garante que a imagem cubra todo o header */
-    background-position: center; /* Centraliza a imagem no header */
+    background-size: cover;
+    /* Garante que a imagem cubra todo o header */
+    background-position: center;
+    /* Centraliza a imagem no header */
 }
 
 
 .nav-menu {
-    display: none; /* O menu fica oculto por padrão em dispositivos móveis */
+    display: none;
+    /* O menu fica oculto por padrão em dispositivos móveis */
     flex-direction: column;
     position: absolute;
     top: 50px !important;
@@ -614,11 +713,13 @@ header {
 
 
 .nav-menu.active {
-    display: flex; /* Exibe o menu quando a classe 'active' é adicionada */
+    display: flex;
+    /* Exibe o menu quando a classe 'active' é adicionada */
 }
 
 .hamburger {
-    display: flex; /* Exibe o ícone do menu em dispositivos móveis */
+    display: flex;
+    /* Exibe o ícone do menu em dispositivos móveis */
 }
 
 
@@ -629,17 +730,36 @@ header {
 
 
 .add-to-cart {
-    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
-    padding: 8px 15px; /* Reduz o padding para ajuste */
-    width: 100%; /* Garante que o botão ocupe toda a largura do card */
-    margin-top: auto; /* Adiciona espaço acima do botão */
+    font-size: 14px;
+    /* Reduz o tamanho da fonte em telas menores */
+    padding: 8px 15px;
+    /* Reduz o padding para ajuste */
+    width: 100%;
+    /* Garante que o botão ocupe toda a largura do card */
+    margin-top: auto;
+    /* Adiciona espaço acima do botão */
 }
 
-.banner { 
+.add-to-cart:hover {
+    background-color: none; /* Cor de fundo mais escura no hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+}
+
+
+
+.button-green {
+    background-color: green; /* Cor verde */
+    color: white; /* Cor do texto */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+
+.banner {
     height: auto;
     overflow: hidden;
     text-align: center;
-    margin-bottom: 20px; /* Espaçamento abaixo do banner */
+    margin-bottom: 20px;
+    /* Espaçamento abaixo do banner */
     margin-top: 10px;
 }
 
@@ -654,7 +774,8 @@ header {
 
 @media (max-width: 480px) {
     .products {
-        grid-template-columns: repeat(2, 1fr); /* Mesmo para dispositivos muito pequenos */
+        grid-template-columns: repeat(2, 1fr);
+        /* Mesmo para dispositivos muito pequenos */
         gap: 5px;
     }
 }
@@ -664,11 +785,13 @@ header {
 }
 
 header {
-    height: 500px; /* Ajusta a altura do header para telas menores */
+    height: 500px;
+    /* Ajusta a altura do header para telas menores */
 }
 
 .nav-menu {
-    display: none; /* O menu fica oculto por padrão em dispositivos móveis */
+    display: none;
+    /* O menu fica oculto por padrão em dispositivos móveis */
     flex-direction: column;
     position: absolute;
     top: 60px;
@@ -678,11 +801,13 @@ header {
 }
 
 .nav-menu.active {
-    display: flex; /* Exibe o menu quando a classe 'active' é adicionada */
+    display: flex;
+    /* Exibe o menu quando a classe 'active' é adicionada */
 }
 
 .hamburger {
-    display: flex; /* Exibe o ícone do menu em dispositivos móveis */
+    display: flex;
+    /* Exibe o ícone do menu em dispositivos móveis */
 }
 
 
@@ -693,10 +818,27 @@ header {
 }
 
 .add-to-cart {
-    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
-    padding: 8px 15px; /* Reduz o padding para ajuste */
-    width: 100%; /* Garante que o botão ocupe toda a largura do card */
-    margin-top: auto; /* Adiciona espaço acima do botão */
+    font-size: 14px;
+    /* Reduz o tamanho da fonte em telas menores */
+    padding: 8px 15px;
+    /* Reduz o padding para ajuste */
+    width: 100%;
+    /* Garante que o botão ocupe toda a largura do card */
+    margin-top: auto;
+    /* Adiciona espaço acima do botão */
+}
+
+.add-to-cart:hover {
+   background-color: none;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+}
+
+
+
+.button-green {
+    background-color: green; /* Cor verde */
+    color: white; /* Cor do texto */
+    transition: background-color 0.3s ease; /* Transição suave */
 }
 
 
@@ -706,23 +848,24 @@ header {
 }
 
 
-            /* Ajuste do botão do carrinho para telas menores */
-            #cart {
-                top: 85px;
-                right: 15px;
-                font-size: 1.3em;
-                padding: 10px;
-            }
-    
-            #cart i {
-                margin-right: 4px;
+/* Ajuste do botão do carrinho para telas menores */
+#cart {
+    top: 85px;
+    right: 15px;
+    font-size: 1.3em;
+    padding: 10px;
 }
 
-.banner { 
+#cart i {
+    margin-right: 4px;
+}
+
+.banner {
     height: auto;
     overflow: hidden;
     text-align: center;
-    margin-bottom: 20px; /* Espaçamento abaixo do banner */
+    margin-bottom: 20px;
+    /* Espaçamento abaixo do banner */
     margin-top: 10px;
 }
 
@@ -730,8 +873,10 @@ header {
 .banner img {
     width: 100%;
     height: 100%;
-    display: block; /* Remove espaços em branco abaixo da imagem */
-    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    display: block;
+    /* Remove espaços em branco abaixo da imagem */
+    margin: 0 auto;
+    /* Centraliza a imagem horizontalmente */
     object-fit: cover;
     transition: opacity 1s ease;
 }
@@ -739,21 +884,27 @@ header {
 /* Mídia query para telas com resolução de 720 x 1600px */
 @media (max-width: 720px) {
     .catalog-container {
-        padding: 5px; /* Reduz o padding para telas menores */
+        padding: 5px;
+        /* Reduz o padding para telas menores */
     }
 
     .product-card {
-        flex: 1 1 calc(50% - 10px); /* Ajusta a largura dos produtos para duas colunas */
-        max-width: calc(90% - 10px); /* Limita a largura dos produtos */
-        margin: 0; /* Remove margens para melhor ajuste */
+        flex: 1 1 calc(50% - 10px);
+        /* Ajusta a largura dos produtos para duas colunas */
+        max-width: calc(90% - 10px);
+        /* Limita a largura dos produtos */
+        margin: 0;
+        /* Remove margens para melhor ajuste */
     }
 
     header {
-        height: 700px; /* Ajusta a altura do header para telas menores */
+        height: 700px;
+        /* Ajusta a altura do header para telas menores */
     }
 
     .nav-menu {
-        display: none; /* O menu fica oculto por padrão em dispositivos móveis */
+        display: none;
+        /* O menu fica oculto por padrão em dispositivos móveis */
         flex-direction: column;
         position: absolute;
         top: 60px;
@@ -763,41 +914,67 @@ header {
     }
 
     .nav-menu.active {
-        display: flex; /* Exibe o menu quando a classe 'active' é adicionada */
+        display: flex;
+        /* Exibe o menu quando a classe 'active' é adicionada */
     }
 
     .hamburger {
-        display: flex; /* Exibe o ícone do menu em dispositivos móveis */
+        display: flex;
+        /* Exibe o ícone do menu em dispositivos móveis */
     }
 
     .logo {
-        display: none; /* Logo opcional para ocultar em telas menores */
+        display: none;
+        /* Logo opcional para ocultar em telas menores */
     }
 
     header h1 {
-        font-size: 1.5em; /* Reduz o tamanho da fonte do título em telas menores */
+        font-size: 1.5em;
+        /* Reduz o tamanho da fonte do título em telas menores */
         margin-top: 20px;
     }
 
     header .logo {
-        height: 50px; /* Ajusta a altura da logo para telas menores */
-        top: 95px; /* Ajusta a posição da logo para telas menores */
-        left: 10px; /* Ajusta a posição da logo para telas menores */
+        height: 50px;
+        /* Ajusta a altura da logo para telas menores */
+        top: 95px;
+        /* Ajusta a posição da logo para telas menores */
+        left: 10px;
+        /* Ajusta a posição da logo para telas menores */
     }
 }
 
 .add-to-cart {
-    font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
-    padding: 8px 15px; /* Reduz o padding para ajuste */
-    width: 100%; /* Garante que o botão ocupe toda a largura do card */
-    margin-top: auto; /* Adiciona espaço acima do botão */
+    font-size: 14px;
+    /* Reduz o tamanho da fonte em telas menores */
+    padding: 8px 15px;
+    /* Reduz o padding para ajuste */
+    width: 100%;
+    /* Garante que o botão ocupe toda a largura do card */
+    margin-top: auto;
+    /* Adiciona espaço acima do botão */
 }
 
-.banner { 
+.add-to-cart:hover {
+   background-color: none;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+}
+
+
+
+.button-green {
+    background-color: green; /* Cor verde */
+    color: white; /* Cor do texto */
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+
+.banner {
     height: auto;
     overflow: hidden;
     text-align: center;
-    margin-bottom: 20px; /* Espaçamento abaixo do banner */
+    margin-bottom: 20px;
+    /* Espaçamento abaixo do banner */
     margin-top: 10px;
 }
 
@@ -805,8 +982,10 @@ header {
 .banner img {
     width: 100%;
     height: 100%;
-    display: block; /* Remove espaços em branco abaixo da imagem */
-    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    display: block;
+    /* Remove espaços em branco abaixo da imagem */
+    margin: 0 auto;
+    /* Centraliza a imagem horizontalmente */
     object-fit: cover;
     transition: opacity 1s ease;
 }

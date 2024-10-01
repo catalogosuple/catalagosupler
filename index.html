@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
-         <!-- Menu de navegação -->
-         <nav>
+        <!-- Menu de navegação -->
+        <nav>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -18,167 +20,168 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="https://catalogosupler.blogspot.com/">Blog</a></li>
-                <li><a href="https://catalogosupler.blogspot.com/p/contatos.html">Contato</a></li>
-                <img src="img/rounded-in-photoretrica.png" alt="Logo" class="logo"> <!-- Adiciona a logo --> 
+                <li><a href="https://meubloz.blogspot.com/">Blog</a></li>
+                <li><a href="https://meubloz.blogspot.com/p/contatos.html">Contato</a></li>
+                <img src="img/rounded-in-photoretrica.png" alt="Logo" class="logo"> <!-- Adiciona a logo -->
             </ul>
-            
+
         </nav>
-        
-       
+
+
     </header>
- <!--Banner -->
+    <!--Banner -->
 
- <div id="bannerContainer">
-    <img id="bannerImage" src="img/mudarparamelhor.png" alt="Banner" style="opacity: 1;">
-</div>
+    <div id="bannerContainer">
+        <img id="bannerImage" src="img/mudarparamelhor.png" alt="Banner" style="opacity: 1;">
+    </div>
 
-<div class="indicator-container">
-    <span class="indicator" onclick="changeBannerTo(0)"></span>
-    <span class="indicator" onclick="changeBannerTo(1)"></span>
-    <span class="indicator" onclick="changeBannerTo(2)"></span>
-    <span class="indicator" onclick="changeBannerTo(3)"></span>
-</div>
+    <div class="indicator-container">
+        <span class="indicator" onclick="changeBannerTo(0)"></span>
+        <span class="indicator" onclick="changeBannerTo(1)"></span>
+        <span class="indicator" onclick="changeBannerTo(2)"></span>
+        <span class="indicator" onclick="changeBannerTo(3)"></span>
+    </div>
 
-<div id="message" style="display: none;"></div>
+    <div id="message" style="display: none;"></div>
 
     <main>
-<section class="products">
-        <div class="product-card">
-            <a href="produtos/cha-verde.html">
-                <img src="img/chaverde.PNG" alt="Chá-Verde Imagem 1" class="product-image primary">
-            </a>         
-            <h2 id="producth2">Chá-Verde</h2>
-            <p>O chá verde é uma <a href="produtos/cha-verde.html">Ler mais...</a></p>
-            <p class="price">R$ 60,00</p>
-            <button class="add-to-cart" onclick="addToCart('CHÁ-VERDE', 60)">Adicionar ao Carrinho</button>
-        </div>
-    
+        <section class="products">
+            <div class="product-card">
+                <a href="produtos/cha-verde.html">
+                    <img src="img/chaverde.PNG" alt="Chá-Verde Imagem 1" class="product-image primary">
+                </a>
+                <h2 id="producth2">Chá-Verde</h2>
+                <p>O chá verde é uma <a href="produtos/cha-verde.html">Ler mais...</a></p>
+                <p class="price">R$ 60,00</p>
+                <button class="add-to-cart" onclick="addToCart('CHÁ-VERDE', 60)">Adicionar ao Carrinho</button>
+            </div>
 
-    <div class="product-card">
-        <a href="produtos/creatina150g.html">
-            <img src="img/creatina_150g.png" alt="Creatina 150g" class="product-image">
-        </a>
-        <h2 id="producth2">Creatina 150g</h2>
-        <p>A creatina é um <a href="produtos/creatina150g.html">Ler mais...</a></p>
-        <p class="price">R$ 75,00</p>
-        <button class="add-to-cart" onclick="addToCart('CREATINA 150G', 75)">Adicionar ao Carrinho</button>
-    </div>
 
-    <div class="product-card">
-        <a href="produtos/whey-giga.html">
-            <img src="img/whey_giga_900g.png" alt="Whey GIGA 900g Imagem 1" class="product-image primary">
-            <img src="img/whey_giga_banana.png" alt="Whey GIGA 900g Imagem 1" class="product-image secondary">
-        </a>    
-            <button class="arrow-button arrow-left" onclick="prevImage(this)">&#9664;</button>
-            <button class="arrow-button arrow-right" onclick="nextImage(this)">&#9654;</button>
-        
-        <h2 id="producth2">Whey GIGA 900G</h2>
-        <p>Whey protein é um tipo de <a href="produtos/whey-giga.html">Ler mais...</a></p>
-        <p class="price">R$ 110,00</p>
-        <button class="add-to-cart" onclick="addToCart('WHEY GIGA 900G', 110)">Adicionar ao Carrinho</button>
-    </div>
-    
-    
-    <div class="product-card">
-        <a href="produtos/vitaminac.html">
-            <img src="img/vitaminac.PNG" alt="Vitamina C" class="product-image">
-        </a>
-        <h2 id="producth2">Vitamina C</h2>
-        <p>A vitamina C, também <a href="produtos/vitaminac.html">Ler mais...</a></p>
-        <p class="price">R$ 45,00</p>
-        <button class="add-to-cart" onclick="addToCart('VITAMINA C', 45)">Adicionar ao Carrinho</button>
-    </div>
+            <div class="product-card">
+                <a href="produtos/creatina150g.html">
+                    <img src="img/creatina_150g.png" alt="Creatina 150g" class="product-image">
+                </a>
+                <h2 id="producth2">Creatina 150g</h2>
+                <p>A creatina é um <a href="produtos/creatina150g.html">Ler mais...</a></p>
+                <p class="price">R$ 75,00</p>
+                <button class="add-to-cart"  onclick="addToCart('CREATINA 150G', 75)">Adicionar ao Carrinho</button>
+            </div>
 
-    <div class="product-card">
-        <a href="produtos/creatina300g.html">
-            <img src="img/creatinamono300g2.PNG" alt="Creatina 300g" class="product-image">
-        </a>
-        <h2 id="producth2">Creatina 300g</h2>
-        <p>A creatina é armazenada <a href="produtos/creatina300g.html">Ler mais...</a></p>
-        <p class="price">R$ 100,00</p>
-        <button class="add-to-cart" onclick="addToCart('CREATINA 300G', 100)">Adicionar ao Carrinho</button>
-    </div>
+            <div class="product-card">
+                <a href="produtos/whey-giga.html">
+                    <img src="img/whey_giga_900g.png" alt="Whey GIGA 900g Imagem 1" class="product-image primary">
+                    <img src="img/whey_giga_banana.png" alt="Whey GIGA 900g Imagem 1" class="product-image secondary">
+                </a>
+                <button class="arrow-button arrow-left" onclick="prevImage(this)">&#9664;</button>
+                <button class="arrow-button arrow-right" onclick="nextImage(this)">&#9654;</button>
 
-    <div class="product-card">
-        <a href="produtos/pretreinobobpump-150g.html">
-            <img src="img/pretreino_limao.png" alt="Pré-Treino BOB Pump 150g" class="product-image primary">
-            <img src="img/pretreino_melancia.png" alt="Pré-Treino BOB Pump 150g" class="product-image secondary">
-        </a>
-        <button class="arrow-button arrow-left" onclick="prevImage(this)">&#9664;</button>
-        <button class="arrow-button arrow-right" onclick="nextImage(this)">&#9654;</button>
-        <h2 id="producth2">Pré-Treino BOB Pump 150g</h2>
-        <p>O pré-treino é um <a href="produtos/pretreinobobpump-150g.html">Ler mais...</a></p>
-        <p class="price">R$ 55,00</p>
-        <button class="add-to-cart" onclick="addToCart('PRÉ-TREINO BOB PUMP 150G', 55)">Adicionar ao Carrinho</button>
-    </div>
+                <h2 id="producth2">Whey GIGA 900G</h2>
+                <p>Whey protein é um tipo de <a href="produtos/whey-giga.html">Ler mais...</a></p>
+                <p class="price">R$ 110,00</p>
+                <button class="add-to-cart" onclick="addToCart('WHEY GIGA 900G', 110)">Adicionar ao Carrinho</button>
+            </div>
 
-    <div class="product-card">
-        <a href="produtos/colageno.html">
-            <img src="img/colagenohidro.PNG" alt="Colágeno" class="product-image">
-        </a>
-        <h2 id="producth2">Colágeno</h2>
-        <p>O colágeno é uma pro <a href="produtos/colageno.html">Ler mais...</a></p>
-        <p class="price">R$ 60,00</p>
-        <button class="add-to-cart" onclick="addToCart('COLÁGENO', 60)">Adicionar ao Carrinho</button>
-    </div>
 
-    <div class="product-card">
-        <a href="produtos/magri-for-casp.html">
-            <img src="img/magrifor.PNG" alt="MagriFor CASP" class="product-image">
-        </a>
-        <h2 id="producth2">MagriFor CASP</h2>
-        <p>A MagriFOR CASP é um <a href="produtos/magri-for-casp.html">Ler mais...</a></p>
-        <p class="price">R$ 60,00</p>
-        <button class="add-to-cart" onclick="addToCart('MAGRIFOR CASP', 60)">Adicionar ao Carrinho</button>
-    </div>
+            <div class="product-card">
+                <a href="produtos/vitaminac.html">
+                    <img src="img/vitaminac.PNG" alt="Vitamina C" class="product-image">
+                </a>
+                <h2 id="producth2">Vitamina C</h2>
+                <p>A vitamina C, também <a href="produtos/vitaminac.html">Ler mais...</a></p>
+                <p class="price">R$ 45,00</p>
+                <button class="add-to-cart" onclick="addToCart('VITAMINA C', 45)">Adicionar ao Carrinho</button>
+            </div>
 
-    <div class="product-card">
-        <a href="produtos/creatina-mix-200g.html">
-            <img src="img/creatina_mix_200g.png" alt="Creatina Mix 200g" class="product-image">
-        </a>
-        <h2 id="producth2">Creatina Mix 200g</h2>
-        <p>A creatina é utili <a href="produtos/creatina-mix-200g.html">Ler mais...</a></p>
-        <p class="price">R$ 75,00</p>
-        <button class="add-to-cart" onclick="addToCart('CREATINA MIX 200G', 75)">Adicionar ao Carrinho</button>
-    </div>
-</section>
+            <div class="product-card">
+                <a href="produtos/creatina300g.html">
+                    <img src="img/creatinamono300g2.PNG" alt="Creatina 300g" class="product-image">
+                </a>
+                <h2 id="producth2">Creatina 300g</h2>
+                <p>A creatina é armazenada <a href="produtos/creatina300g.html">Ler mais...</a></p>
+                <p class="price">R$ 100,00</p>
+                <button class="add-to-cart" onclick="addToCart('CREATINA 300G', 100)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <a href="produtos/pretreinobobpump-150g.html">
+                    <img src="img/pretreino_limao.png" alt="Pré-Treino BOB Pump 150g" class="product-image primary">
+                    <img src="img/pretreino_melancia.png" alt="Pré-Treino BOB Pump 150g" class="product-image secondary">
+                </a>
+                <button class="arrow-button arrow-left" onclick="prevImage(this)">&#9664;</button>
+                <button class="arrow-button arrow-right" onclick="nextImage(this)">&#9654;</button>
+                <h2 id="producth2">Pré-Treino BOB Pump 150g</h2>
+                <p>O pré-treino é um <a href="produtos/pretreinobobpump-150g.html">Ler mais...</a></p>
+                <p class="price">R$ 55,00</p>
+                <button class="add-to-cart"  onclick="addToCart('PRÉ-TREINO BOB PUMP 150G', 55)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <a href="produtos/colageno.html">
+                    <img src="img/colagenohidro.PNG" alt="Colágeno" class="product-image">
+                </a>
+                <h2 id="producth2">Colágeno</h2>
+                <p>O colágeno é uma pro <a href="produtos/colageno.html">Ler mais...</a></p>
+                <p class="price">R$ 60,00</p>
+                <button class="add-to-cart" onclick="addToCart('COLÁGENO', 60)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <a href="produtos/magri-for-casp.html">
+                    <img src="img/magrifor.PNG" alt="MagriFor CASP" class="product-image">
+                </a>
+                <h2 id="producth2">MagriFor CASP</h2>
+                <p>A MagriFOR CASP é um <a href="produtos/magri-for-casp.html">Ler mais...</a></p>
+                <p class="price">R$ 60,00</p>
+                <button class="add-to-cart" onclick="addToCart('MAGRIFOR CASP', 60)">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <a href="produtos/creatina-mix-200g.html">
+                    <img src="img/creatina_mix_200g.png" alt="Creatina Mix 200g" class="product-image">
+                </a>
+                <h2 id="producth2">Creatina Mix 200g</h2>
+                <p>A creatina é utili <a href="produtos/creatina-mix-200g.html">Ler mais...</a></p>
+                <p class="price">R$ 75,00</p>
+                <button class="add-to-cart" onclick="addToCart('CREATINA MIX 200G', 75)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
 
     </main>
     <div id="cart" onclick="showCart()">
         <i class="fas fa-shopping-cart"></i>(<span id="cart-count">0</span>)
     </div>
     <!-- Modal do Carrinho -->
-<div class="modal" id="cart-modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeCart()">&times;</span>
-        <h2 id="h2cart">Seu Carrinho</h2>
-        <div id="cart-items"></div>
-        <div class="modal-footer">
-            <button id="btn-submit" onclick="sendToWhatsApp()">Enviar pedido</button>
-        </div>        
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2 id="h2cart">Seu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div class="modal-footer">
+                <button id="btn-submit" onclick="sendToWhatsApp()">Enviar pedido</button>
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- Botão do whatsapp -->
-<div class="whatsapp-btn">
-    <a href="https://api.whatsapp.com/send?phone=5585985934633" target="_blank">
-      <img src="https://i.imgur.com/0eXWAI6.jpeg" alt="WhatsApp" />
-      <span class="tooltip">Entre em contato!</span>
-    </a>
-</div>
-<footer>
-    <p>&copy; 2024. Todos os direitos reservados.</p>
- 
-  
-    <div class="payment-info">
-        <p>Formas de pagamento:</p>
-        <img src="img/whatsapp-badge.png" alt="Formas de Pagamento">
+    <!-- Botão do whatsapp -->
+    <div class="whatsapp-btn">
+        <a href="https://api.whatsapp.com/send?phone=5585985934633" target="_blank">
+            <img src="https://i.imgur.com/0eXWAI6.jpeg" alt="WhatsApp" />
+            <span class="tooltip">Entre em contato!</span>
+        </a>
     </div>
-</footer>
+    <footer>
+        <p>&copy; 2024. Todos os direitos reservados.</p>
+
+
+        <div class="payment-info">
+            <p>Formas de pagamento:</p>
+            <img src="img/whatsapp-badge.png" alt="Formas de Pagamento">
+        </div>
+    </footer>
     <script src="script.js"></script>
     <!-- Incluindo Font Awesome para ícones -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 </body>
+
 </html>
