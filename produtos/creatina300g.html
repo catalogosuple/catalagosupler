@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creatina 300g</title>
+    <style>
+        /* Estilos gerais do corpo */
+        body {
+            height: 100vh; /* Para garantir que o body ocupe 100% da altura da janela */
+            margin: 0;    /* Remove margens padrão */
+            display: flex; /* Usando flexbox */
+            flex-direction: column; /* Coloca os itens na coluna */
+            font-family: 'Arial', sans-serif;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        main {
+            flex: 1; /* Faz o main crescer e ocupar o espaço restante */
+        }
+
+        header {
+            background-color: #ffffff; /* Branco para o cabeçalho */
+            position: relative;
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid #ddd; /* Linha sutil para separar o cabeçalho */
+            display: flex;
+            justify-content: center; /* Centraliza os elementos horizontalmente */
+            align-items: center; /* Centraliza os elementos verticalmente */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .logo {
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            width: 50px; /* Tamanho da logo */
+            height: 50px;
+            border-radius: 50%; /* Torna a imagem redonda */
+            border: 2px solid #ddd; /* Borda para a logo */
+        
+        }
+       
+
+
+
+        nav {
+            position: fixed; /* Fixa o menu no topo da tela */
+            top: 0; /* Define o menu no topo da página */
+            width: 100%; /* Garante que o menu ocupe toda a largura da tela */
+            z-index: 1000; /* Coloca o menu acima de outros elementos */
+            background-color: rgb(226, 10, 10); /* Cor de fundo */
+            padding: 25px 0; /* Espaçamento no menu */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destacar o menu */
+        }
+        
+        /* Estilos gerais do menu de navegação */
+        .nav-menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #ffffff;
+            list-style: none;
+            margin: 0;
+        }
+        
+        /* Estilos dos itens de menu */
+        .nav-menu li {
+            display: inline;
+            margin: 0 15px;
+            padding: 3px;
+        }
+        
+        .nav-menu li a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            color: white !important;
+        }
+        
+        /* Ícone hambúrguer */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px; /* Define o ícone no canto superior direito */
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 30px;  /* Largura do hambúrguer fechado */
+            height: 3px;  /* Espessura das linhas */
+            background-color: rgb(255, 255, 255);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 6px;
+            width: 20px;
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            width: 20px;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: -8px;
+            width: 20px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .product-details {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+        }
+
+        .image-gallery {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            margin: 0 5px;
+        }
+
+        .thumbnail:hover {
+            border-color: #f39c12; /* Amarelo ao passar o mouse */
+        }
+
+        .thumbnail.active {
+            border-color: #f39c12; /* Amarelo ativo */
+        }
+
+        .product-info {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .product-info h2 {
+            font-size: 2em;
+            color: #f39c12; /* Amarelo */
+            margin: 10px 0;
+        }
+
+        .product-info .description {
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #666;
+        }
+
+        .product-info .price {
+            font-size: 2em;
+            color: #e74c3c; /* Vermelho */
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .product-info .add-to-cart {
+            background-color: #f39c12;
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .product-info .add-to-cart:hover {
+            background-color: #e59400; /* Cor do botão ao passar o mouse */
+        }
+
+        
+        #message {
+            position: fixed;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #127e12c4;
+            /* Cor de fundo verde */
+            color: white;
+            /* Texto branco */
+            padding: 15px;
+            border-radius: 15px;
+            z-index: 1000;
+            display: none;
+            /* Inicialmente escondido */
+            transition: opacity 0.5s;
+        }
+
+                
+        .add-to-cart {
+            background-color: #ff5722;
+            /* Cor de fundo chamativa */
+            color: #fff;
+            /* Cor do texto branca */
+            border: none;
+            /* Remove borda padrão */
+            border-radius: 25px;
+            /* Bordas arredondadas */
+            padding: 10px 20px;
+            /* Padding ajustado */
+            font-size: 16px;
+            /* Tamanho da fonte adequado */
+            cursor: pointer;
+            /* Mostra o ponteiro de mão no hover */
+            transition: transform 0.2s ease, background-color 0.5s ease;
+            /* Transição suave */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Sombra suave */
+            margin-top: auto;
+            /* Garante que o botão fique no fundo do cartão */
+            display: block;
+            /* Garante que o botão ocupe a largura disponível */
+
+        }
+
+        .add-to-cart:hover {
+            background-color: #e64a19;
+            /* Cor de fundo mais escura no hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            /* Aumenta a sombra no hover */
+        }
+
+        .added {
+            transform: scale(1.1) !important; /* Aumenta o tamanho do botão */
+            background-color: green !important; /* Cor verde durante a animação */
+            color: white; /* Texto em branco durante a animação */
+        }
+
+
+        /* Estilos do carrinho */
+        #cart {
+            position: fixed;
+            top: 15px; /* Ajuste a distância do topo conforme necessário */
+            right: 35px; /* Ajuste a distância da borda direita conforme necessário */
+            background-color: #ff5722;
+            color: #fff;
+            padding: 10px 15px; /* Ajuste o padding para um tamanho menor */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em; /* Reduz o tamanho da fonte */
+            z-index: 1000;
+            display: flex;
+            align-items: center; /* Alinha verticalmente */
+            justify-content: center;
+        }
+
+        #cart i {
+            margin-right: 5px; /* Ajusta o espaço entre o ícone e o texto */
+            line-height: 1; /* Garante que a altura da linha do ícone seja a mesma que a do texto */
+            font-size: 1.2em; /* Ajusta o tamanho do ícone, se necessário */
+        }
+
+
+
+        .cart-item {
+            background-color: #1a1a1a;
+            border: 1px solid #f5a623;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item button {
+            background-color: #f5a623;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .cart-item button:hover {
+            background-color: #f5a623;
+        }
+
+        /* Estilo específico para o botão "Enviar pedido" */
+        #btn-submit {
+            background-color: #f5a623;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #btn-submit:hover {
+            background-color: #f5a623;
+        }
+
+        /* Estilos do modal */
+        .modal {
+            display: none;
+            
+            /* Oculta o modal por padrão */
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Estilo da imagem no modal */
+        .modal-content {
+            position: relative;
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #f5a623;
+        }
+
+        #h2cart {
+            color: #ffffff;
+        }
+
+        #cart-items {
+            color: #ffffff;
+        }
+
+        .cart-item {
+            background-color: #131212;
+            /* Branco */
+            border: 1px solid #f5a623;
+            /* Borda sutil */
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-from-cart {
+            background-color: #e74c3c;
+            /* Vermelho para destacar a remoção */
+            color: #ffffff;
+            /* Texto claro para contraste */
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .remove-from-cart:hover {
+            background-color: #c0392b;
+            /* Vermelho mais escuro */
+        }
+
+        .total {
+            font-size: 1.3em;
+            margin: 20px 0;
+        }
+                
+
+        /* Estilos do footer */
+        footer {
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        footer a {
+            color: #f39c12;
+        }
+
+        footer .payment-info {
+            margin-top: 15px;
+        }
+
+        footer .payment-info img {
+            width: 110px;
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
+
+
+       @media (min-width: 768px) {
+            header {
+                background-image: url('img/bannerheader.png') !important;
+            }
+
+            .hamburger {
+                display: none; /* Esconde o ícone de hambúrguer em telas grandes */
+            }
+            .nav-menu {
+                display: block; /* Assegure-se de que o menu esteja visível */
+            }
+            .nav-menu a {
+                justify-content: space-around;
+            }
+            
+            .logo {
+            display: block !important;
+            
+            }
+
+        }
+        /* Estilos para dispositivos móveis */
+        @media (max-width: 768px) {
+            
+            .product-details {
+                flex-direction: column;
+            }
+
+            .product-info h2 {
+                font-size: 1.8em;
+            }
+
+            .product-info .description {
+                font-size: 1em;
+            }
+
+            .product-info .price {
+                font-size: 1.5em;
+            }
+
+            .product-info .add-to-cart {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .logo {
+            display: none;
+            
+            }
+
+            header {
+                background-size: cover; /* Garante que a imagem cubra todo o header */
+                background-position: center; /* Centraliza a imagem no header */
+            }
+
+
+            .nav-menu {
+                display: none; /* O menu fica oculto por padrão em dispositivos móveis */
+                flex-direction: column;
+                position: absolute;
+                top: 50px !important;
+                left: 0;
+                width: 100%;
+                background-color: rgba(226, 10, 10, 0.644) !important;
+            }
+
+
+            .nav-menu.active {
+                display: flex; /* Exibe o menu quando a classe 'active' é adicionada */
+            }
+
+            .hamburger {
+                display: flex; /* Exibe o ícone do menu em dispositivos móveis */
+            }
+        }
+
+        /* Ajuste do botão do carrinho para telas menores */
+        #cart {
+            top: 85px;
+            right: 15px;
+            font-size: 1.3em;
+            padding: 10px;
+        }
+
+        #cart i {
+            margin-right: 4px;
+        }
+
+
+        @media (max-width: 480px) {
+            
+            .products {
+                grid-template-columns: repeat(2, 1fr); /* Mesmo para dispositivos muito pequenos */
+                gap: 5px;
+            }
+        }
+
+        /* Ajuste do botão do carrinho para telas menores */
+        #cart {
+            top: 85px;
+            right: 15px;
+            font-size: 1.3em;
+            padding: 10px;
+        }
+
+        #cart i {
+            margin-right: 4px;
+        }
+
+        .logo {
+            display: none;
+        }
+
+        header {
+            height: 50px; /* Ajusta a altura do header para telas menores */
+        }
+
+        .nav-menu {
+            display: none; /* O menu fica oculto por padrão em dispositivos móveis */
+            flex-direction: column;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(226, 10, 10, 0.644) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-menu.active {
+            display: flex; /* Exibe o menu quando a classe 'active' é adicionada */
+        }
+
+        .hamburger {
+            display: flex; /* Exibe o ícone do menu em dispositivos móveis */
+        }
+
+
+
+        #message {
+            font-size: 15px;
+            bottom: 20px;
+        }
+
+        .add-to-cart {
+            font-size: 14px; /* Reduz o tamanho da fonte em telas menores */
+            padding: 8px 15px; /* Reduz o padding para ajuste */
+            width: 100%; /* Garante que o botão ocupe toda a largura do card */
+            margin-top: auto; /* Adiciona espaço acima do botão */
+        }
+
+
+        .social-icon {
+            font-size: 20px;
+            margin: 0 8px;
+        }
+
+        
+
+
+                    /* Ajuste do botão do carrinho para telas menores */
+                    #cart {
+                        top: 85px;
+                        right: 15px;
+                        font-size: 1.3em;
+                        padding: 10px;
+                    }
+            
+                    #cart i {
+                        margin-right: 4px;
+        }
+
+        .banner { 
+            height: auto;
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 20px; /* Espaçamento abaixo do banner */
+            margin-top: 10px;
+        }
+
+        /* Estilo da imagem no banner */
+        .banner img {
+            width: 100%;
+            height: 100%;
+            display: block; /* Remove espaços em branco abaixo da imagem */
+            margin: 0 auto; /* Centraliza a imagem horizontalmente */
+            object-fit: cover;
+            transition: opacity 1s ease;
+        }
+        /* Ajuste do botão do carrinho para telas menores */
+        #cart {
+            top: 85px;
+            right: 15px;
+            font-size: 1.3em;
+            padding: 10px;
+        }
+
+        #cart i {
+            margin-right: 4px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+         <!-- Menu de navegação -->
+         <nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="https://meubloz.blogspot.com/">Blog</a></li>
+                <li><a href="https://meubloz.blogspot.com/p/contatos.html">Contato</a></li>
+                <img src="../img/rounded-in-photoretrica.png" alt="Logo" class="logo"> <!-- Adiciona a logo --> 
+            </ul>
+            
+        </nav>
+    </header>
+    <div id="message" style="display: none;"></div>
+    <main>
+        <section class="product-details">
+            <div class="image-gallery">
+                <img src="../img/creatinamono300g2.PNG" alt="Creatina 300g" class="product-image" id="mainImage">
+            </div>
+            <div class="product-info">
+                <h2>Creatina 300g</h2>
+                <p class="description">A creatina é utilizada como uma fonte rápida de energia durante atividades de alta intensidade.</p>
+                <p class="price">R$ 100,00</p>
+                <button class="add-to-cart" id="add-to-cart-btn" onclick="addToCart('CREATINA 300G', 100)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+    </main>
+    <div id="cart" onclick="showCart()">
+        <i class="fas fa-shopping-cart"></i>(<span id="cart-count">0</span>)
+    </div>
+    <!-- Modal do Carrinho -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2 id="h2cart">Seu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div class="modal-footer">
+                <button id="btn-submit" onclick="sendToWhatsApp()">Enviar pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024. Todos os direitos reservados.</p>
+        <div class="payment-info">
+            <p>Formas de pagamento:</p>
+            <img src="../img/whatsapp-badge.png" alt="Formas de Pagamento">
+        </div>
+    </footer>
+
+    <script>
+        function changeImage(imageSrc) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = imageSrc;
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        // Seleciona o ícone do menu hamburguer e a lista de navegação
+        const hamburger = document.querySelector('.hamburger');
+        const menu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active'); // Alterna o estado do ícone
+            menu.classList.toggle('active'); // Alterna a visibilidade do menu
+        });
+
+        // Carrinho de Compras
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Carregar o carrinho ao inicializar
+updateCartCount();
+
+// Função para adicionar itens ao carrinho
+function addToCart(productName, productPrice) {
+    const productIndex = cart.findIndex(item => item.name === productName);
+
+    if (productIndex !== -1) {
+        cart[productIndex].quantity += 1;
+    } else {
+        cart.push({
+            name: productName,
+            price: productPrice,
+            quantity: 1
+        });
+    }
+
+    updateCartCount();
+    saveCartToLocalStorage(); // Salvar o carrinho no localStorage
+
+    // Exibir mensagem de feedback
+    const messageDiv = document.getElementById('message');
+    messageDiv.innerText = `${productName} adicionado ao carrinho!`;
+    messageDiv.style.display = 'block'; // Mostra a mensagem
+    messageDiv.style.opacity = '1'; // Define a opacidade para 1
+    setTimeout(() => {
+        messageDiv.style.opacity = '0'; // Após 3 segundos, define a opacidade para 0
+        setTimeout(() => {
+            messageDiv.style.display = 'none'; // Esconde o elemento
+        }, 500); // Espera a transição de opacidade antes de esconder
+    }, 2000); // Tempo de exibição da mensagem
+    
+    // Destacar o botão clicado
+    const button = event.target; // Obtém o botão que foi clicado
+    button.classList.add('button-green'); // Adiciona a classe que muda a cor
+
+    // Remove a classe após 1 segundo (1000 ms)
+    setTimeout(() => {
+        button.classList.remove('button-green');
+    }, 1000);
+}
+
+// Função para salvar o carrinho no localStorage
+function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Função para atualizar o número de itens no carrinho
+function updateCartCount() {
+    document.getElementById('cart-count').innerText = cart.reduce((total, item) => total + item.quantity, 0);
+}
+
+// Função para mostrar o carrinho
+function showCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = ''; // Limpa os itens anteriores
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    } else {
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <p>${item.name} - R$${item.price.toFixed(2)} x ${item.quantity}</p>
+                <button onclick="removeFromCart(${index})">Remover</button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+        });
+    }
+
+    document.getElementById('cart-modal').style.display = 'flex';
+}
+
+// Função para remover um item do carrinho
+function removeFromCart(index) {
+    cart.splice(index, 1); // Remove o item do array de carrinho
+    updateCartCount();
+    saveCartToLocalStorage(); // Atualiza o localStorage após a remoção
+    showCart(); // Atualiza a exibição do carrinho
+}
+
+// Função para fechar o modal do carrinho
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+// Função para enviar o carrinho para o WhatsApp
+function sendToWhatsApp() {
+    if (cart.length === 0) {
+        alert('Seu carrinho está vazio.');
+        return;
+    }
+
+    let message = 'Olá, gostaria de comprar os seguintes itens:\n\n';
+
+    cart.forEach(item => {
+        message += `${item.name} - R$${item.price.toFixed(2)} x ${item.quantity}\n`;
+    });
+
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    message += `\nTotal: R$${total.toFixed(2)}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://api.whatsapp.com/send?phone=5585985934633&text=${encodedMessage}`, '_blank');
+
+    closeCart(); // Fecha o modal após o envio
+}
+
+
+function nextImage(button) {
+    const card = button.closest('.product-card');
+    const images = card.querySelectorAll('.product-image');
+    const currentIndex = Array.from(images).findIndex(img => img.style.display !== 'none');
+    const nextIndex = (currentIndex + 1) % images.length;
+
+    images[currentIndex].style.display = 'none';
+    images[nextIndex].style.display = 'block';
+}
+
+function prevImage(button) {
+    const card = button.closest('.product-card');
+    const images = card.querySelectorAll('.product-image');
+    const currentIndex = Array.from(images).findIndex(img => img.style.display !== 'none');
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+
+    images[currentIndex].style.display = 'none';
+    images[prevIndex].style.display = 'block';
+}
+
+const images = ["img/mudarparamelhor.png", "img/melhores_precos.png", "img/teste.png", "img/seumelhor.png"]; // URLs das imagens
+let currentIndex = 0;
+const bannerImage = document.getElementById('bannerImage');
+const indicators = document.querySelectorAll('.indicator');
+let startX = 0; // Para capturar a posição inicial do toque
+
+// Função para atualizar o banner e os indicadores
+function updateBanner() {
+    bannerImage.style.opacity = 0; // faz a imagem desaparecer
+    setTimeout(() => {
+        bannerImage.src = images[currentIndex]; // muda a imagem
+        bannerImage.style.opacity = 1; // faz a nova imagem aparecer
+        updateIndicators(); // atualiza os indicadores
+    }, 1000); // espera a transição de saída
+}
+
+// Função para alterar o banner automaticamente
+function changeBanner() {
+    currentIndex = (currentIndex + 1) % images.length; // aumenta o índice e faz o loop
+    updateBanner();
+}
+
+// Função para mudar para um banner específico quando o indicador é clicado
+function changeBannerTo(index) {
+    currentIndex = index; // define o índice com base no indicador clicado
+    updateBanner();
+}
+
+// Função para atualizar os indicadores visuais
+function updateIndicators() {
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentIndex);
+    });
+}
+
+// Função para alterar para o próximo banner
+function nextBanner() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateBanner();
+}
+
+// Função para voltar ao banner anterior
+function prevBanner() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateBanner();
+}
+
+// Troca a imagem a cada 4 segundos automaticamente
+setInterval(changeBanner, 4000);
+
+// Inicializa os indicadores corretamente na primeira execução
+updateIndicators();
+
+// Lógica de arrastar (swipe) para dispositivos móveis
+bannerImage.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX; // Captura a posição inicial do toque
+});
+
+bannerImage.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX; // Captura a posição final do toque
+    const diffX = startX - endX; // Calcula a diferença
+
+    if (diffX > 50) {
+        // Se arrastou para a esquerda
+        nextBanner();
+    } else if (diffX < -50) {
+        // Se arrastou para a direita
+        prevBanner();
+    }
+});
+
+
+// Atualiza a contagem de itens do carrinho ao carregar a página
+updateCartCount();
+
+    </script>
+    
+    <!-- Incluindo Font Awesome para ícones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+</body>
+</html>

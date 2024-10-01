@@ -1,6 +1,9 @@
 // Carrinho de Compras
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+// Carregar o carrinho ao inicializar
+updateCartCount();
+
 // Função para adicionar itens ao carrinho
 function addToCart(productName, productPrice) {
     const productIndex = cart.findIndex(item => item.name === productName);
@@ -30,7 +33,6 @@ function addToCart(productName, productPrice) {
         }, 500); // Espera a transição de opacidade antes de esconder
     }, 2000); // Tempo de exibição da mensagem
     
-
     // Destacar o botão clicado
     const button = event.target; // Obtém o botão que foi clicado
     button.classList.add('button-green'); // Adiciona a classe que muda a cor
@@ -53,23 +55,22 @@ function updateCartCount() {
 
 // Função para mostrar o carrinho
 function showCart() {
-    if (cart.length === 0) {
-        alert('Seu carrinho está vazio.');
-        return;
-    }
-
     const cartItemsContainer = document.getElementById('cart-items');
     cartItemsContainer.innerHTML = ''; // Limpa os itens anteriores
 
-    cart.forEach((item, index) => {
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('cart-item');
-        itemElement.innerHTML = `
-            <p>${item.name} - R$${item.price} x ${item.quantity}</p>
-            <button onclick="removeFromCart(${index})">Remover</button>
-        `;
-        cartItemsContainer.appendChild(itemElement);
-    });
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+    } else {
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <p>${item.name} - R$${item.price.toFixed(2)} x ${item.quantity}</p>
+                <button onclick="removeFromCart(${index})">Remover</button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+        });
+    }
 
     document.getElementById('cart-modal').style.display = 'flex';
 }
@@ -108,6 +109,7 @@ function sendToWhatsApp() {
 
     closeCart(); // Fecha o modal após o envio
 }
+
 
 function nextImage(button) {
     const card = button.closest('.product-card');
