@@ -393,6 +393,10 @@ nav {
     color: #ffffff;
 }
 
+#cart-count {
+    display: none !important;
+}
+
 .cart-item {
     background-color: #ffffff;
     /* Branco */
@@ -562,17 +566,18 @@ footer .payment-info img {
 
 .cart-item {
     background-color: #1a1a1a;
-    border: 1px solid #f5a623;
+    border: 1px solid #9e1410;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 12px;
 }
 
 .cart-item button {
-    background-color: #f5a623;
+    background-color: #af320c;
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -586,7 +591,7 @@ footer .payment-info img {
 
 /* Estilo específico para o botão "Enviar pedido" */
 #btn-submit {
-    background-color: #f5a623;
+    background-color: #126e06;
     color: #fff;
     border: none;
     padding: 10px 20px;

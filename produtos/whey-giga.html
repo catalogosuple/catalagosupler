@@ -389,6 +389,10 @@
             color: #ffffff;
         }
 
+        #cart-count {
+            display: none !important;
+        }
+
         .cart-item {
             background-color: #131212;
             /* Branco */
@@ -690,7 +694,7 @@
         </section>
     </main>
     <div id="cart" onclick="showCart()">
-        <i class="fas fa-shopping-cart"></i>(<span id="cart-count">0</span>)
+        <i class="fas fa-shopping-cart"></i><span id="cart-count">0</span>
     </div>
     <!-- Modal do Carrinho -->
     <div class="modal" id="cart-modal">

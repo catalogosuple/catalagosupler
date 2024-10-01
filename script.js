@@ -1,31 +1,38 @@
-// Função para carregar o carrinho do localStorage e atualizar o contador
+// Função para carregar o carrinho ao carregar a página
 function loadCartFromLocalStorage() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    // Atualiza a contagem visual do carrinho
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById('cart-count').innerText = totalItems;
+    if (cart.length === 0) {
+        document.getElementById('cart-count').innerText = '0'; // Zera o contador
+    } else {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cart-count').innerText = totalItems; // Atualiza a contagem visual
+    }
 }
+
+// Evento para carregar o carrinho assim que a página é carregada
+document.addEventListener('DOMContentLoaded', function() {
+    loadCartFromLocalStorage();
+});
 
 // Função para adicionar itens ao carrinho
 function addToCart(productName, productPrice) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const productIndex = cart.findIndex(item => item.name === productName);
-
+    
     if (productIndex !== -1) {
-        cart[productIndex].quantity += 1; // Incrementa a quantidade do produto já existente
+        cart[productIndex].quantity += 1; // Incrementa a quantidade do item
     } else {
         cart.push({
             name: productName,
             price: productPrice,
-            quantity: 1 // Novo produto adicionado com quantidade 1
+            quantity: 1 // Novo item com quantidade inicial de 1
         });
     }
 
-    // Salva o carrinho atualizado no localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
 
-    // Atualiza o contador de itens do carrinho na página sem recarregar
+    // Atualiza o contador de itens do carrinho na página
     loadCartFromLocalStorage();
 
     // Feedback de item adicionado
@@ -46,10 +53,8 @@ function removeFromCart(index) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.splice(index, 1); // Remove o item pelo índice
     localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
-    
-    // Atualiza a contagem do carrinho e exibição do modal
-    loadCartFromLocalStorage(); 
-    showCart();
+    loadCartFromLocalStorage(); // Atualiza a contagem do carrinho
+    showCart(); // Atualiza a exibição dos itens no modal
 }
 
 // Função para exibir o carrinho no modal
@@ -107,9 +112,9 @@ function sendToWhatsApp() {
     closeCart();
 }
 
-// Evento para carregar o carrinho e atualizar o contador ao carregar a página
+// Carregar o carrinho visual e atualizar a contagem ao navegar de volta para a home
 document.addEventListener('DOMContentLoaded', function() {
-    loadCartFromLocalStorage();
+    loadCartFromLocalStorage(); // Atualiza a contagem de itens quando a página inicial carrega
 });
 
 
