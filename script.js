@@ -66,11 +66,13 @@ function removeFromCart(index) {
     showCart(); // Atualiza a exibição dos itens no modal
 }
 
-// Função para exibir o carrinho no modal
+// Função para exibir o carrinho e o valor total
 function showCart() {
     const cartItemsContainer = document.getElementById('cart-items');
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     cartItemsContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+    let totalValue = 0; // Variável para somar o total
 
     if (cart.length === 0) {
         const emptyMessage = document.createElement('p');
@@ -87,10 +89,21 @@ function showCart() {
                 <button onclick="removeFromCart(${index})">Remover</button>
             `;
             cartItemsContainer.appendChild(itemElement);
+
+            // Soma o valor total de cada item (preço * quantidade)
+            totalValue += item.price * item.quantity;
         });
+
+        // Cria um elemento para exibir o valor total
+        const totalElement = document.createElement('div');
+        totalElement.classList.add('cart-total');
+        totalElement.innerHTML = `
+            <p><strong>Total: R$${totalValue.toFixed(2)}</strong></p>
+        `;
+        cartItemsContainer.appendChild(totalElement); // Adiciona ao container do carrinho
     }
 
-    document.getElementById('cart-modal').style.display = 'flex'; // Exibe o modal
+    document.getElementById('cart-modal').style.display = 'flex';
 }
 
 // Fecha o modal do carrinho
