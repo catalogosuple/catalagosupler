@@ -246,42 +246,26 @@
 
                 
         .add-to-cart {
-            background-color: #ff5722;
-            /* Cor de fundo chamativa */
-            color: #fff;
-            /* Cor do texto branca */
-            border: none;
-            /* Remove borda padrão */
-            border-radius: 25px;
-            /* Bordas arredondadas */
-            padding: 10px 20px;
-            /* Padding ajustado */
-            font-size: 16px;
-            /* Tamanho da fonte adequado */
-            cursor: pointer;
-            /* Mostra o ponteiro de mão no hover */
-            transition: transform 0.2s ease, background-color 0.5s ease;
-            /* Transição suave */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Sombra suave */
-            margin-top: auto;
-            /* Garante que o botão fique no fundo do cartão */
-            display: block;
-            /* Garante que o botão ocupe a largura disponível */
+            background-color: #ff5722; /* Cor de fundo chamativa */
+            color: #fff; /* Cor do texto branca */
+            border: none; /* Remove borda padrão */
+            border-radius: 25px; /* Bordas arredondadas */
+            padding: 10px 20px; /* Padding ajustado */
+            font-size: 16px; /* Tamanho da fonte adequado */
+            cursor: pointer; /* Mostra o ponteiro de mão no hover */
+            transition: transform 0.2s ease, background-color 0.5s ease; /* Transição suave */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin-top: auto; /* Garante que o botão fique no fundo do cartão */
+            display: block; /* Garante que o botão ocupe a largura disponível */
 
         }
 
-        .add-to-cart:hover {
-            background-color: #e64a19;
-            /* Cor de fundo mais escura no hover */
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-            /* Aumenta a sombra no hover */
-        }
+        
 
-        .added {
-            transform: scale(1.1) !important; /* Aumenta o tamanho do botão */
-            background-color: green !important; /* Cor verde durante a animação */
-            color: white; /* Texto em branco durante a animação */
+        .button-green {
+            background-color: green; /* Cor verde */
+            color: white; /* Cor do texto */
+            transition: background-color 0.3s ease; /* Transição suave */
         }
 
 
@@ -700,7 +684,7 @@
                 <h2>Whey GIGA 900G</h2>
                 <p class="description">O Whey Protein GIGA é uma proteína de alta qualidade derivada do soro do leite, ideal para quem busca aumentar a massa muscular e melhorar a recuperação pós-treino.</p>
                 <p class="price">R$ 110,00</p>
-                <button class="add-to-cart" id="add-to-cart-btn" onclick="addToCart('WHEY GIGA 900G', 110)">Adicionar ao Carrinho</button>
+                <button class="add-to-cart" onclick="addToCart('WHEY GIGA 900G', 110)">Adicionar ao Carrinho</button>
                
             </div>
         </section>
@@ -746,9 +730,7 @@
 
        // Carrinho de Compras
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Carregar o carrinho ao inicializar
-updateCartCount();
+updateCartCount(); // Atualiza a contagem de itens no carrinho ao carregar a página
 
 // Função para adicionar itens ao carrinho
 function addToCart(productName, productPrice) {
@@ -765,25 +747,24 @@ function addToCart(productName, productPrice) {
     }
 
     updateCartCount();
-    saveCartToLocalStorage(); // Salvar o carrinho no localStorage
+    saveCartToLocalStorage();
+    history.replaceState(null, null, window.location.href); // Força a atualização do estado da página
 
     // Exibir mensagem de feedback
     const messageDiv = document.getElementById('message');
     messageDiv.innerText = `${productName} adicionado ao carrinho!`;
-    messageDiv.style.display = 'block'; // Mostra a mensagem
-    messageDiv.style.opacity = '1'; // Define a opacidade para 1
+    messageDiv.style.display = 'block'; 
+    messageDiv.style.opacity = '1'; 
     setTimeout(() => {
-        messageDiv.style.opacity = '0'; // Após 3 segundos, define a opacidade para 0
+        messageDiv.style.opacity = '0'; 
         setTimeout(() => {
-            messageDiv.style.display = 'none'; // Esconde o elemento
-        }, 500); // Espera a transição de opacidade antes de esconder
-    }, 2000); // Tempo de exibição da mensagem
-    
-    // Destacar o botão clicado
-    const button = event.target; // Obtém o botão que foi clicado
-    button.classList.add('button-green'); // Adiciona a classe que muda a cor
+            messageDiv.style.display = 'none'; 
+        }, 500); 
+    }, 2000);
 
-    // Remove a classe após 1 segundo (1000 ms)
+    const button = event.target; 
+    button.classList.add('button-green'); 
+
     setTimeout(() => {
         button.classList.remove('button-green');
     }, 1000);
@@ -801,32 +782,33 @@ function updateCartCount() {
 
 // Função para mostrar o carrinho
 function showCart() {
-    const cartItemsContainer = document.getElementById('cart-items');
-    cartItemsContainer.innerHTML = ''; // Limpa os itens anteriores
-
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
-    } else {
-        cart.forEach((item, index) => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('cart-item');
-            itemElement.innerHTML = `
-                <p>${item.name} - R$${item.price.toFixed(2)} x ${item.quantity}</p>
-                <button onclick="removeFromCart(${index})">Remover</button>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-        });
+        alert('Seu carrinho está vazio.');
+        return;
     }
+
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = ''; 
+
+    cart.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+        itemElement.innerHTML = `
+            <p>${item.name} - R$${item.price} x ${item.quantity}</p>
+            <button onclick="removeFromCart(${index})">Remover</button>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+    });
 
     document.getElementById('cart-modal').style.display = 'flex';
 }
 
 // Função para remover um item do carrinho
 function removeFromCart(index) {
-    cart.splice(index, 1); // Remove o item do array de carrinho
+    cart.splice(index, 1); 
     updateCartCount();
-    saveCartToLocalStorage(); // Atualiza o localStorage após a remoção
-    showCart(); // Atualiza a exibição do carrinho
+    saveCartToLocalStorage(); 
+    showCart(); 
 }
 
 // Função para fechar o modal do carrinho
@@ -853,8 +835,21 @@ function sendToWhatsApp() {
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://api.whatsapp.com/send?phone=5585985934633&text=${encodedMessage}`, '_blank');
 
-    closeCart(); // Fecha o modal após o envio
+    closeCart(); 
 }
+
+// Forçar atualização do carrinho ao sair da página
+window.onbeforeunload = function() {
+    localStorage.setItem('cart', JSON.stringify(cart)); // Salvar o carrinho
+};
+
+// Forçar atualização do estado da página ao adicionar ao carrinho
+history.replaceState(null, null, window.location.href); 
+
+// Intervalo para atualização do carrinho
+setInterval(() => {
+    updateCartCount();
+}, 3000); // Atualiza a cada 3 segundos
 
 
 
