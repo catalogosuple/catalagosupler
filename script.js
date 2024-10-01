@@ -18,6 +18,7 @@ function addToCart(productName, productPrice) {
 
     updateCartCount();
     saveCartToLocalStorage();
+    history.replaceState(null, null, window.location.href); // Força a atualização do estado da página
 
     // Exibir mensagem de feedback
     const messageDiv = document.getElementById('message');
@@ -107,17 +108,18 @@ function sendToWhatsApp() {
     closeCart(); 
 }
 
-// Detectar mudanças de visibilidade da página
-document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') {
-        updateCartCount();
-    }
-});
-
-// Atualizar carrinho ao voltar
-window.onpopstate = function(event) {
-    updateCartCount();
+// Forçar atualização do carrinho ao sair da página
+window.onbeforeunload = function() {
+    localStorage.setItem('cart', JSON.stringify(cart)); // Salvar o carrinho
 };
+
+// Forçar atualização do estado da página ao adicionar ao carrinho
+history.replaceState(null, null, window.location.href); 
+
+// Intervalo para atualização do carrinho
+setInterval(() => {
+    updateCartCount();
+}, 3000); // Atualiza a cada 3 segundos
 
 
 
