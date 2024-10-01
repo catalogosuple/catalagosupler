@@ -309,20 +309,20 @@
         }
 
 
-
         .cart-item {
             background-color: #1a1a1a;
-            border: 1px solid #f5a623;
+            border: 1px solid #9e1410;
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 15px;
         }
 
         .cart-item button {
-            background-color: #f5a623;
+            background-color: #af320c;
             color: #fff;
             border: none;
             padding: 5px 10px;
@@ -336,7 +336,7 @@
 
         /* Estilo específico para o botão "Enviar pedido" */
         #btn-submit {
-            background-color: #f5a623;
+            background-color: #126e06;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -409,18 +409,6 @@
             display: none !important;
         }
 
-        .cart-item {
-            background-color: #131212;
-            /* Branco */
-            border: 1px solid #f5a623;
-            /* Borda sutil */
-            border-radius: 6px;
-            padding: 12px;
-            margin: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
 
         .remove-from-cart {
             background-color: #e74c3c;
@@ -799,27 +787,46 @@ function updateCartCount() {
     document.getElementById('cart-count').innerText = cart.reduce((total, item) => total + item.quantity, 0);
 }
 
-// Função para mostrar o carrinho
+// Função para exibir o carrinho e o valor total
 function showCart() {
     const cartItemsContainer = document.getElementById('cart-items');
-    cartItemsContainer.innerHTML = ''; // Limpa os itens anteriores
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartItemsContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+    let totalValue = 0; // Variável para somar o total
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        const emptyMessage = document.createElement('p');
+        emptyMessage.innerText = 'Seu carrinho está vazio.';
+        emptyMessage.style.textAlign = 'center';
+        emptyMessage.style.fontWeight = 'bold';
+        cartItemsContainer.appendChild(emptyMessage);
     } else {
         cart.forEach((item, index) => {
             const itemElement = document.createElement('div');
             itemElement.classList.add('cart-item');
             itemElement.innerHTML = `
-                <p>${item.name} - R$${item.price.toFixed(2)} x ${item.quantity}</p>
+                <p>${item.name} - R$${item.price} x ${item.quantity}</p>
                 <button onclick="removeFromCart(${index})">Remover</button>
             `;
             cartItemsContainer.appendChild(itemElement);
+
+            // Soma o valor total de cada item (preço * quantidade)
+            totalValue += item.price * item.quantity;
         });
+
+        // Cria um elemento para exibir o valor total
+        const totalElement = document.createElement('div');
+        totalElement.classList.add('cart-total');
+        totalElement.innerHTML = `
+            <p><strong>Total: R$${totalValue.toFixed(2)}</strong></p>
+        `;
+        cartItemsContainer.appendChild(totalElement); // Adiciona ao container do carrinho
     }
 
     document.getElementById('cart-modal').style.display = 'flex';
 }
+
 
 // Função para remover um item do carrinho
 function removeFromCart(index) {
