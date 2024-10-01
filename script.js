@@ -6,7 +6,7 @@ function loadCartFromLocalStorage() {
         document.getElementById('cart-count').innerText = '0'; // Zera o contador
     } else {
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        document.getElementById('cart-count').innerText = totalItems;
+        document.getElementById('cart-count').innerText = totalItems; // Atualiza a contagem visual
     }
 }
 
@@ -21,16 +21,16 @@ function addToCart(productName, productPrice) {
     const productIndex = cart.findIndex(item => item.name === productName);
     
     if (productIndex !== -1) {
-        cart[productIndex].quantity += 1;
+        cart[productIndex].quantity += 1; // Incrementa a quantidade do item
     } else {
         cart.push({
             name: productName,
             price: productPrice,
-            quantity: 1
+            quantity: 1 // Novo item com quantidade inicial de 1
         });
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho no localStorage
+    localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
 
     // Atualiza o contador de itens do carrinho na página
     loadCartFromLocalStorage();
@@ -54,9 +54,10 @@ function removeFromCart(index) {
     cart.splice(index, 1); // Remove o item pelo índice
     localStorage.setItem('cart', JSON.stringify(cart)); // Salva o carrinho atualizado no localStorage
     loadCartFromLocalStorage(); // Atualiza a contagem do carrinho
+    showCart(); // Atualiza a exibição dos itens no modal
 }
 
-// Função para exibir o carrinho
+// Função para exibir o carrinho no modal
 function showCart() {
     const cartItemsContainer = document.getElementById('cart-items');
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -80,12 +81,12 @@ function showCart() {
         });
     }
 
-    document.getElementById('cart-modal').style.display = 'flex';
+    document.getElementById('cart-modal').style.display = 'flex'; // Exibe o modal
 }
 
 // Fecha o modal do carrinho
 function closeCart() {
-    document.getElementById('cart-modal').style.display = 'none';
+    document.getElementById('cart-modal').style.display = 'none'; // Fecha o modal
 }
 
 // Função para enviar o carrinho para o WhatsApp
@@ -110,6 +111,12 @@ function sendToWhatsApp() {
 
     closeCart();
 }
+
+// Carregar o carrinho visual e atualizar a contagem ao navegar de volta para a home
+document.addEventListener('DOMContentLoaded', function() {
+    loadCartFromLocalStorage(); // Atualiza a contagem de itens quando a página inicial carrega
+});
+
 
 
 
